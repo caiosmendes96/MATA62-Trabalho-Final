@@ -6,6 +6,8 @@ public class Programa {
 
 		System.out.println("oi");
 
+		Console console = Console.getConsole();
+
 		Livro livro1 = new Livro(100, "Engenharia de Software", "Addison", "Ian Sommervile", "6º", 2000);
         livro1.adicionarExemplar(new Exemplar());  
 		livro1.adicionarExemplar(new Exemplar());  
@@ -22,6 +24,7 @@ public class Programa {
 		Usuario usuario4 = new AlunoPosGraduacao("Pedro Paulo", 789);
 		Usuario usuario1 = new Professor("Calos lucena", 100);
 		
+		console.lerComando();
 		//System.out.println("Tempo emprestimo usuario 1: " + usuario1.getTempoEmprestimo());
 		//System.out.println("Tempo emprestimo usuario 2: " + usuario2.getTempoEmprestimo());
 		//System.out.println("Tempo emprestimo usuario 3: " + usuario3.getTempoEmprestimo());
