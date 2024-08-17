@@ -23,11 +23,12 @@ public class Console {
         System.out.print("Digite um comando: ");
         String command = scanner.nextLine();
 
-        switch (command.split( " ")[0]){
+        switch (command.split(" ")[0]){
             case "emp":
             // comando para emprestar
             codUsuario = command.split( " ")[1];
             codLivro = command.split( " ")[2];
+            GerenciadorBiblioteca.criarEmprestimo(codUsuario,codLivro);
             System.out.println(codUsuario);
             System.out.println(codLivro);
 
