@@ -41,7 +41,26 @@ public class ComandoConsultar implements IComandoConsulta {
 
     public void executarConsultaUsuario(int codUsuario){
         
-        System.out.println("CONSULTA USUARIO \n");
+        System.out.println(" --- CONSULTA USUARIO --- \n");
+
+        ArrayList <Emprestimo> emprestimoEncontrados = GerenciadorBiblioteca.buscarEmprestimosPorCodUsuario(codUsuario);
+        System.out.println("--- EMPRÉSTIMOS \n");
+        for (Emprestimo emprestimo : emprestimoEncontrados){
+            
+            System.out.println("Título do livro:" + GerenciadorBiblioteca.buscarLivroPorCodLivro(emprestimo.getCodLivro()).getTitulo() );
+            System.out.println("Data empréstimo:" + emprestimo.getDataEmprestimo());
+            System.out.println("Status empréstimo: " + emprestimo.getStatus());
+            System.out.println("Data prevista para devolução:" + emprestimo.getDataDevolucao());
+        }
+        System.out.println("--- RESERVAS \n");
+        ArrayList <Reserva> reservasEncontradas = GerenciadorBiblioteca.buscarReservasPorCodUsuario(codUsuario);
+        for(Reserva reserva : reservasEncontradas){  
+            System.out.println("***");  
+            System.out.println("Título do livro: " + GerenciadorBiblioteca.buscarLivroPorCodLivro(reserva.getCodLivro()).getTitulo() );
+            System.out.println("Data solicitação: " + reserva.getDataSolicitacao());
+        }
+
+
 
 
 

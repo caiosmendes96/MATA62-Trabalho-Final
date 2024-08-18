@@ -26,7 +26,7 @@ public class Console { // INVOKER DO COMMAND
 
         IComandoEmprestimo comandoEmprestimo = new ComandoEmprestar();
         IComandoConsulta comandoConsultar = new ComandoConsultar();
-        IComandoEmprestimo comandoReseva = new ComandoReservar();
+        IComandoEmprestimo comandoRersevar = new ComandoReservar();
 
         String command = "";
         
@@ -65,7 +65,7 @@ public class Console { // INVOKER DO COMMAND
                     codUsuario = command.split( " ")[1];
                     codLivro = command.split( " ")[2];
 
-                    comandoReseva.executar(Integer.parseInt(codUsuario), Integer.parseInt(codLivro));
+                    comandoRersevar.executar(Integer.parseInt(codUsuario), Integer.parseInt(codLivro));
 
                     break;
 

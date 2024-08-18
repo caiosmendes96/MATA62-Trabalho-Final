@@ -48,7 +48,6 @@ public final class GerenciadorBiblioteca {
     public static Reserva buscarReservaPorCodLivroECodUsuario(int codUsuario, int codLivro){
 
         ArrayList<Reserva> reservasEncontradas = buscarReservasPorCodLivro(codLivro);
-        System.out.println(reservasEncontradas);
         for(Reserva reserva : reservasEncontradas){
             if(reserva.getCodUsuario() == codUsuario){
                 return reserva;
@@ -59,6 +58,7 @@ public final class GerenciadorBiblioteca {
 
     public static ArrayList<Reserva> buscarUsuariosPorCodLivro(int codLivro){
 
+
         ArrayList<Reserva> reservasAuxiliar = new ArrayList<>();
         for(Reserva reserva : reservas){
             if(reserva.getCodLivro() == codLivro){
@@ -68,6 +68,18 @@ public final class GerenciadorBiblioteca {
         return reservasAuxiliar;
     }
 
+    public static ArrayList<Reserva> buscarReservasPorCodUsuario(int codUsuario){
+
+
+        ArrayList<Reserva> reservasAuxiliar = new ArrayList<>();
+        for(Reserva reserva : reservas){
+            if(reserva.getCodUsuario() == codUsuario){
+                reservasAuxiliar.add(reserva);
+            }   
+        }
+        return reservasAuxiliar;
+    }
+    
     public static Usuario buscarUsuarioPorCodigo(int codigo){
         for(Usuario usuario : usuarios){
             if(usuario.getCodigo() == codigo){
@@ -104,7 +116,7 @@ public final class GerenciadorBiblioteca {
     public static Emprestimo buscarEmprestimoPorCodExemplar(int codExemplar){
 
         for(Emprestimo emprestimo : emprestimos){
-            
+
             if(emprestimo.getCodExemplar() == codExemplar){
                 return emprestimo;
             }
@@ -112,4 +124,15 @@ public final class GerenciadorBiblioteca {
            return null;
     }
     
+    public static ArrayList<Emprestimo> buscarEmprestimosPorCodUsuario(int codUsuario){
+
+        ArrayList<Emprestimo> emprestimosEncontrados = new ArrayList<>();
+        for(Emprestimo emprestimo : emprestimos){
+
+            if(emprestimo.getCodUsuario() == codUsuario){
+                emprestimosEncontrados.add(emprestimo);
+            }
+        }
+           return emprestimosEncontrados;
+    }
 }

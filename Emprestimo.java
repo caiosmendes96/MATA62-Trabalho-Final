@@ -1,8 +1,5 @@
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 
 public class Emprestimo {
 
@@ -11,6 +8,15 @@ public class Emprestimo {
     private LocalDate dataDevolucao;
     private int codUsuario;
     private int codExemplar;
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public int getCodExemplar() {
         return codExemplar;
@@ -36,11 +42,10 @@ public class Emprestimo {
         this.dataEmprestimo = date;
         this.dataDevolucao = this.dataEmprestimo.plusDays(tempoEmprestimoUsuario);
         this.codExemplar = codExemplar;
- 
+        this.status = "em curso";
 
-        //System.out.println("Tempo para emprestimo dias " + usuario.getTempoEmprestimo()); 
-        System.out.println("Data Emprestimo: " + this.dataEmprestimo); 
-        System.out.println("Data devolução: " + this.dataDevolucao); 
+       // System.out.println("Data Emprestimo: " + this.dataEmprestimo); 
+      //  System.out.println("Data devolução: " + this.dataDevolucao); 
 
     }
 

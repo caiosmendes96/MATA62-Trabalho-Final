@@ -6,7 +6,7 @@ public class ComandoReservar implements IComandoEmprestimo {
 
         GerenciadorBiblioteca.criarReserva(codUsuario,codLivro);
 
-        System.out.println("Criou reserva \n");
+        System.out.println("Criou reserva com sucesso! \n");
 
         System.out.println("Nome do usuário: " + GerenciadorBiblioteca.buscarUsuarioPorCodigo(codUsuario).getNome());
 

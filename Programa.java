@@ -9,14 +9,18 @@ public class Programa {
 		Console console = Console.getConsole();
 
 		Livro livro1 = new Livro(100, "Engenharia de Software", "Addison", "Ian Sommervile", "6º", 2000);
-        livro1.adicionarExemplar(new Exemplar());  
-		livro1.adicionarExemplar(new Exemplar());  
+        livro1.adicionarExemplar();  
+		livro1.adicionarExemplar();  
 
 		Livro livro2 = new Livro(101, "UML - Guia do Usuário", "Campus", "Grady Booch, James Rumbaugh, Ivar Jacobson", "7º", 2000);
-		livro2.adicionarExemplar(new Exemplar());
+		livro2.adicionarExemplar();
+		
+		Livro livro3 = new Livro(200, "Code Complete", "Microsoft Press", "Steve McConnell", "2º", 2014);
+		livro3.adicionarExemplar();
 
 		GerenciadorBiblioteca.adicionarLivro(livro1);
 		GerenciadorBiblioteca.adicionarLivro(livro2);
+		GerenciadorBiblioteca.adicionarLivro(livro3);
 
 
 		Usuario usuario2 = new AlunoGraduacao("João da Silva", 123);

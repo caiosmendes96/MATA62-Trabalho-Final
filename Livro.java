@@ -72,8 +72,8 @@ public class Livro {
         this.examplares = examplares;
     }
 
-    public void adicionarExemplar(Exemplar exemplar){
-        this.examplares.add(exemplar);
+    public void adicionarExemplar(){
+        this.examplares.add(new Exemplar());
     }
 
     public String toString() {
