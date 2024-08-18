@@ -75,6 +75,7 @@ public class Livro {
     public void adicionarExemplar(Exemplar exemplar){
         this.examplares.add(exemplar);
     }
+
     public String toString() {
         return "Codigo: " + this.codigo + "\n" + "Titulo: " + this.titulo + "\n" +  "Editora: " + this.editora  + "\n" + "Autores: " + this.autores + "\n" + "Edição: " + 
         this.edicao + "\n" +"Ano de publicação:" + this.anoPublicacao + "\n";

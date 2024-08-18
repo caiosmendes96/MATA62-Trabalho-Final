@@ -6,7 +6,7 @@ public class Reserva {
     private int codLivro;
     private int codUsuario;
 
-    public Reserva(int codLivro, int codUsuario){
+    public Reserva(int codUsuario, int codLivro){
         this.codLivro = codLivro;
         this.codUsuario = codUsuario;
     }

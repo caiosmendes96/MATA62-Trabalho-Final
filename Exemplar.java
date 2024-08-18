@@ -2,24 +2,31 @@ public class Exemplar {
 
     private static int id = 0;
 	private int codigo;
-    private boolean status;
+    private String status;
 
     public Exemplar(){
         id++;
         this.codigo = id;
-        this.status = true;
+        this.status = "disponivel";
     }
 
     public int getCodigo() {
         return codigo;
     }
 
-    public boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
+    }
+    public void mudarStatus(){
+        if(this.status == "disponivel"){
+            this.status = "emprestado";
+        }else{
+            this.status = "disponivel";
+        }
     }
 
 }

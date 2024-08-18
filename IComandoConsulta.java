@@ -3,6 +3,7 @@
 
 public interface IComandoConsulta {
 
-    public void executar(int codLivro);
+    public void executarConsultaLivro(int codLivro);
+    public void executarConsultaUsuario(int codUsuario);
 
 }

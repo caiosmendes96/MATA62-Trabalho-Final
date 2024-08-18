@@ -45,6 +45,18 @@ public final class GerenciadorBiblioteca {
         return reservasAuxiliar;
     }
 
+    public static Reserva buscarReservaPorCodLivroECodUsuario(int codUsuario, int codLivro){
+
+        ArrayList<Reserva> reservasEncontradas = buscarReservasPorCodLivro(codLivro);
+        System.out.println(reservasEncontradas);
+        for(Reserva reserva : reservasEncontradas){
+            if(reserva.getCodUsuario() == codUsuario){
+                return reserva;
+            }
+        }
+        return null;
+    }
+
     public static ArrayList<Reserva> buscarUsuariosPorCodLivro(int codLivro){
 
         ArrayList<Reserva> reservasAuxiliar = new ArrayList<>();
@@ -57,14 +69,12 @@ public final class GerenciadorBiblioteca {
     }
 
     public static Usuario buscarUsuarioPorCodigo(int codigo){
-
         for(Usuario usuario : usuarios){
             if(usuario.getCodigo() == codigo){
                 return usuario;
             }
            }
            return null;
-
     }
 
     public static void adicionarLivro(Livro livro){
@@ -75,9 +85,10 @@ public final class GerenciadorBiblioteca {
         usuarios.add(usuario);
     }
 
-    public static void criarEmprestimo(int codUsuario, int codLivro){
+    public static void criarEmprestimo(int codUsuario, int codLivro, int tempoEmprestimoUsuario, int codExemplar){
 
-        emprestimos.add(new Emprestimo(codUsuario, codLivro));
+        emprestimos.add(new Emprestimo(codUsuario, codLivro, tempoEmprestimoUsuario, codExemplar));
+
     }
 
     public static void criarReserva(int codUsuario, int codLivro){
@@ -85,4 +96,20 @@ public final class GerenciadorBiblioteca {
         reservas.add(new Reserva(codUsuario, codLivro));
     }
 
+    public static void removerReserva(Reserva reserva){
+
+        reservas.remove(reserva);
+    }
+
+    public static Emprestimo buscarEmprestimoPorCodExemplar(int codExemplar){
+
+        for(Emprestimo emprestimo : emprestimos){
+            
+            if(emprestimo.getCodExemplar() == codExemplar){
+                return emprestimo;
+            }
+        }
+           return null;
+    }
+    
 }
