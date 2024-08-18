@@ -15,14 +15,19 @@ public class Programa {
 		Livro livro2 = new Livro(101, "UML - Guia do Usuário", "Campus", "Grady Booch, James Rumbaugh, Ivar Jacobson", "7º", 2000);
 		livro2.adicionarExemplar(new Exemplar());
 
-		for (Exemplar exemplar : livro1.getExamplares()) {
-			System.out.println(exemplar.getCodigo() + "Status: " + exemplar.getStatus());
-		}
+		GerenciadorBiblioteca.adicionarLivro(livro1);
+		GerenciadorBiblioteca.adicionarLivro(livro2);
+
 
 		Usuario usuario2 = new AlunoGraduacao("João da Silva", 123);
 		Usuario usuario3 = new AlunoPosGraduacao("Luiz Fernando Rodrigues", 456);
 		Usuario usuario4 = new AlunoPosGraduacao("Pedro Paulo", 789);
 		Usuario usuario1 = new Professor("Calos lucena", 100);
+
+		GerenciadorBiblioteca.adicionarUsuario(usuario1);
+		GerenciadorBiblioteca.adicionarUsuario(usuario2);
+		GerenciadorBiblioteca.adicionarUsuario(usuario3);
+		GerenciadorBiblioteca.adicionarUsuario(usuario4);
 		
 		console.lerComando();
 		//System.out.println("Tempo emprestimo usuario 1: " + usuario1.getTempoEmprestimo());

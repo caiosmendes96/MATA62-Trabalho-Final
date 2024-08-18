@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Console {
+public class Console { // INVOKER DO COMMAND
     private static Console console;
 
     // Construtor privado para evitar a criação de múltiplas instâncias
@@ -19,8 +19,11 @@ public class Console {
     public void lerComando() {
         String codUsuario;
         String codLivro;
+
         Scanner scanner = new Scanner(System.in);
+
         System.out.print("Digite um comando: ");
+
         String command = scanner.nextLine();
 
         switch (command.split(" ")[0]){
@@ -28,16 +31,24 @@ public class Console {
             // comando para emprestar
             codUsuario = command.split( " ")[1];
             codLivro = command.split( " ")[2];
-            GerenciadorBiblioteca.criarEmprestimo(codUsuario,codLivro);
-            System.out.println(codUsuario);
-            System.out.println(codLivro);
+            IComandoEmprestimo comandoEmprestimo = new ComandoEmprestar();
+            comandoEmprestimo.executar(Integer.parseInt(codUsuario),Integer.parseInt(codLivro));
 
-            case "liv":
-             //
+            case "liv": 
+            //consultar livro
+             IComandoConsulta comandoConsultar = new ComandoConsultar();
+             codLivro = command.split( " ")[1];
+
+             comandoConsultar.executar(Integer.parseInt(codLivro));
+
+            case "res": //comando para reservar
+
+            //comando = new ComandoReservar();
+            //comando.executar(codUsuario,codLivro);
 
         }
             
-        }
-
-
     }
+
+
+}
