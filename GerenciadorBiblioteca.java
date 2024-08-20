@@ -124,6 +124,17 @@ public final class GerenciadorBiblioteca {
            return null;
     }
     
+    public static Emprestimo buscarEmprestimoPorCodLivro(int codLivro){
+
+        for(Emprestimo emprestimo : emprestimos){
+
+            if(emprestimo.getCodLivro() == codLivro){
+                return emprestimo;
+            }
+        }
+           return null;
+    }
+    
     public static ArrayList<Emprestimo> buscarEmprestimosPorCodUsuario(int codUsuario){
 
         ArrayList<Emprestimo> emprestimosEncontrados = new ArrayList<>();

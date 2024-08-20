@@ -32,9 +32,9 @@ public class ComandoConsultar implements IComandoConsulta {
             if(exemplar.getStatus() == "emprestado"){
                 Emprestimo emprestimo = GerenciadorBiblioteca.buscarEmprestimoPorCodExemplar(exemplar.getCodigo());
                 System.out.println("--EXEMPLAR EMPRESTADO: " );
-                System.out.println("Nome usuário:" + GerenciadorBiblioteca.buscarUsuarioPorCodigo(emprestimo.getCodUsuario()).getNome());
-                System.out.println("Data empréstimo:" + emprestimo.getDataEmprestimo());
-                System.out.println("Data prevista para devolução:" + emprestimo.getDataDevolucao());
+                System.out.println("Nome usuário: " + GerenciadorBiblioteca.buscarUsuarioPorCodigo(emprestimo.getCodUsuario()).getNome());
+                System.out.println("Data empréstimo: " + emprestimo.getDataEmprestimo());
+                System.out.println("Data prevista para devolução: " + emprestimo.getDataDevolucao());
             }
         }
     }
@@ -47,10 +47,10 @@ public class ComandoConsultar implements IComandoConsulta {
         System.out.println("--- EMPRÉSTIMOS \n");
         for (Emprestimo emprestimo : emprestimoEncontrados){
             
-            System.out.println("Título do livro:" + GerenciadorBiblioteca.buscarLivroPorCodLivro(emprestimo.getCodLivro()).getTitulo() );
-            System.out.println("Data empréstimo:" + emprestimo.getDataEmprestimo());
-            System.out.println("Status empréstimo: " + emprestimo.getStatus());
-            System.out.println("Data prevista para devolução:" + emprestimo.getDataDevolucao());
+            System.out.println("Título do livro: " + GerenciadorBiblioteca.buscarLivroPorCodLivro(emprestimo.getCodLivro()).getTitulo() );
+            System.out.println("Data empréstimo: " + emprestimo.getDataEmprestimo());
+            System.out.println("Status empréstimo:  " + emprestimo.getStatus());
+            System.out.println("Data prevista para devolução: " + emprestimo.getDataDevolucao());
         }
         System.out.println("--- RESERVAS \n");
         ArrayList <Reserva> reservasEncontradas = GerenciadorBiblioteca.buscarReservasPorCodUsuario(codUsuario);
