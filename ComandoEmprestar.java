@@ -12,6 +12,8 @@ public class ComandoEmprestar implements IComandoEmprestimo {
             //motivo do insucesso.
         System.out.println("EMPRESTIMO \n");
         Reserva reservaEncontrada = GerenciadorBiblioteca.buscarReservaPorCodLivroECodUsuario(codUsuario,codLivro);
+        boolean encontrouExemplar = false;
+
         if(reservaEncontrada != null){
 
             Usuario usuario = GerenciadorBiblioteca.buscarUsuarioPorCodigo(codUsuario);
@@ -22,7 +24,7 @@ public class ComandoEmprestar implements IComandoEmprestimo {
                     GerenciadorBiblioteca.criarEmprestimo(codUsuario,codLivro,usuario.getTempoEmprestimo(), livro.getExamplares().get(0).getCodigo());
 
                     exemplar.mudarStatus();
-
+                    encontrouExemplar = true;
                     GerenciadorBiblioteca.removerReserva(reservaEncontrada);
                     System.out.println("Criou empréstimo com sucesso! \n");
                     System.out.println("Nome do usuário: " + usuario.getNome());
@@ -31,10 +33,10 @@ public class ComandoEmprestar implements IComandoEmprestimo {
                     break;
                 }
             }
-            //System.out.println("Não tem exemplares disponíveis para empréstimo !");
+            if (!encontrouExemplar){ System.out.println("Não foi possível criar o empréstimo, pois não exemplar disponível !");} 
 
         }else{
-            System.out.println("Não tem reserva !");
+            System.out.println("Não foi possível criar o empréstimo, pois não existe uma reserva !");
         }
         
     }
