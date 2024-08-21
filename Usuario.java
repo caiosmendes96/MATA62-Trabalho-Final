@@ -7,10 +7,12 @@ public abstract class Usuario {
     private String nome;
     private int codigo;
     private int tempoEmprestimo;
+    private int qtdReservas;
 
     public Usuario(String nome,int codigo){
         this.nome = nome;
         this.codigo = codigo;
+        this.qtdReservas = 0;
     }
 
     public abstract void definirTempoEmprestimo(); //metodo abstrato
@@ -36,6 +38,19 @@ public abstract class Usuario {
 
     public void setTempoEmprestimo(int tempoEmprestimo) {
         this.tempoEmprestimo = tempoEmprestimo;
+    }
+
+    public void incrementarQtdReserva(){
+        this.qtdReservas++;
+    }
+
+    public int getQtdReservas() {
+        return qtdReservas;
+    }
+
+    public void setQtdReservas(int qtdReservas) {
+
+        this.qtdReservas = qtdReservas;
     }
 
 }

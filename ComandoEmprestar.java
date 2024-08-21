@@ -1,6 +1,6 @@
 
 
-public class ComandoEmprestar implements IComandoEmprestimo {
+public class ComandoEmprestar implements IComando {
 
     public void executar(int codUsuario, int codLivro){
             // O sistema deve permitir o empréstimo de livros. Durante o empréstimo, o usuário informará o
@@ -22,7 +22,6 @@ public class ComandoEmprestar implements IComandoEmprestimo {
             for(Exemplar exemplar : livro.getExamplares()){
                 if(exemplar.getStatus() == "disponivel"){
                     GerenciadorBiblioteca.criarEmprestimo(codUsuario,codLivro,usuario.getTempoEmprestimo(), livro.getExamplares().get(0).getCodigo());
-
                     exemplar.mudarStatus();
                     encontrouExemplar = true;
                     GerenciadorBiblioteca.removerReserva(reservaEncontrada);

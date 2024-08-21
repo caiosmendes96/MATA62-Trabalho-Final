@@ -10,4 +10,5 @@ public final class Professor extends Usuario {
     public void definirTempoEmprestimo(){
         super.setTempoEmprestimo(7);
     }
+    
 }

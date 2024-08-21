@@ -1,6 +1,7 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class ComandoDevolver implements IComandoEmprestimo {
+public class ComandoDevolver implements IComando{
 
 
     public void executar(int codUsuario, int codLivro){
@@ -21,6 +22,8 @@ public class ComandoDevolver implements IComandoEmprestimo {
                 if(emprestimo.getStatus() == "em curso"){
 
                     emprestimo.setStatus("finalizado");
+                    emprestimo.setDataDevolucaoRealizada(LocalDate.now());
+                    
                     encontrouEmprestimo = true;
                     break;
                 }

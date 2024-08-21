@@ -8,7 +8,7 @@ public class Console { // INVOKER DO COMMAND
     }
 
     // Método público para obter a única instância da classe
-    public static synchronized Console getConsole() {
+    public static Console getConsole() {
         if (console == null) {
             console = new Console();
         }
@@ -24,10 +24,10 @@ public class Console { // INVOKER DO COMMAND
 
         
 
-        IComandoEmprestimo comandoEmprestimo = new ComandoEmprestar();
+        IComando comandoEmprestimo = new ComandoEmprestar();
         IComandoConsulta comandoConsultar = new ComandoConsultar();
-        IComandoEmprestimo comandoRersevar = new ComandoReservar();
-        IComandoEmprestimo comandoDevolver = new ComandoDevolver();
+        IComando comandoRersevar = new ComandoReservar();
+        IComando comandoDevolver = new ComandoDevolver();
 
         String command = "";
         
@@ -70,9 +70,6 @@ public class Console { // INVOKER DO COMMAND
                     comandoRersevar.executar(Integer.parseInt(codUsuario), Integer.parseInt(codLivro));
 
                     break;
-
-                //comando = new ComandoReservar();
-                //comando.executar(codUsuario,codLivro);
                 case "usu":
                     codUsuario = command.split( " ")[1];
                     comandoConsultar.executarConsultaUsuario(Integer.parseInt(codUsuario));

@@ -5,16 +5,26 @@ public class Emprestimo {
 
     private LocalDate dataEmprestimo;
     private int codLivro;
-    private LocalDate dataDevolucao;
+    private LocalDate dataDevolucaoPrevista;
+    private LocalDate dataDevolucaoRealizada; 
     private int codUsuario;
     private int codExemplar;
-    private String status;
+    private String status; 
+
+    public LocalDate getDataDevolucaoRealizada() {
+        return dataDevolucaoRealizada;
+    }
+
+    public void setDataDevolucaoRealizada(LocalDate dataDevolucaoRealizada) {
+        this.dataDevolucaoRealizada = dataDevolucaoRealizada;
+    }
 
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
+
         this.status = status;
     }
 
@@ -40,12 +50,10 @@ public class Emprestimo {
         this.codUsuario = codUsuario;
         this.codLivro = codLivro;
         this.dataEmprestimo = date;
-        this.dataDevolucao = this.dataEmprestimo.plusDays(tempoEmprestimoUsuario);
+        this.dataDevolucaoPrevista = this.dataEmprestimo.plusDays(tempoEmprestimoUsuario);
         this.codExemplar = codExemplar;
         this.status = "em curso";
-
-       // System.out.println("Data Emprestimo: " + this.dataEmprestimo); 
-      //  System.out.println("Data devolução: " + this.dataDevolucao); 
+        this.dataDevolucaoRealizada = null;
 
     }
 
@@ -53,15 +61,15 @@ public class Emprestimo {
         return dataEmprestimo;
     }
 
-    public void setDataEmprestimo(LocalDate dataEmprestimo) {
-        this.dataEmprestimo = dataEmprestimo;
+    public void setDataEmprestimo(LocalDate dataDevolucaoPrevista) {
+        this.dataDevolucaoPrevista = dataDevolucaoPrevista;
     }
 
-    public LocalDate getDataDevolucao() {
-        return dataDevolucao;
+    public LocalDate getDataDevolucaoPrevista() {
+        return dataDevolucaoPrevista;
     }
 
-    public void setDataDevolucao(LocalDate dataDevolucao) {
+    public void setDataDevolucaoPrevista(LocalDate dataDevolucaoPrevista) {
         this.dataDevolucao = dataDevolucao;
     }
 
