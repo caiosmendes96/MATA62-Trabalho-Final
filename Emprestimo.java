@@ -1,15 +1,14 @@
 import java.time.LocalDate;
 
-
 public class Emprestimo {
 
     private LocalDate dataEmprestimo;
     private int codLivro;
     private LocalDate dataDevolucaoPrevista;
-    private LocalDate dataDevolucaoRealizada; 
+    private LocalDate dataDevolucaoRealizada;
     private int codUsuario;
     private int codExemplar;
-    private String status; 
+    private String status;
 
     public LocalDate getDataDevolucaoRealizada() {
         return dataDevolucaoRealizada;
@@ -44,7 +43,7 @@ public class Emprestimo {
         this.codLivro = codLivro;
     }
 
-    public Emprestimo(int codUsuario, int codLivro, int tempoEmprestimoUsuario, int codExemplar){
+    public Emprestimo(int codUsuario, int codLivro, int tempoEmprestimoUsuario, int codExemplar) {
         LocalDate date = LocalDate.now();
 
         this.codUsuario = codUsuario;
@@ -69,10 +68,6 @@ public class Emprestimo {
         return dataDevolucaoPrevista;
     }
 
-    public void setDataDevolucaoPrevista(LocalDate dataDevolucaoPrevista) {
-        this.dataDevolucao = dataDevolucao;
-    }
-
     public int getCodUsuario() {
         return codUsuario;
     }
@@ -81,8 +76,8 @@ public class Emprestimo {
         this.codUsuario = codUsuario;
     }
 
-
-
-    
+    public void setDataDevolucaoPrevista(LocalDate dataDevolucaoPrevista) {
+        this.dataDevolucaoPrevista = dataDevolucaoPrevista;
+    }
 
 }
