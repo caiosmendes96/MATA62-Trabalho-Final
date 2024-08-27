@@ -21,6 +21,7 @@ public class ComandoEmprestar implements IComando {
         boolean encontrouExemplar = false;
         Usuario usuario = GerenciadorBiblioteca.buscarUsuarioPorCodigo(codUsuario);
         Livro livro = GerenciadorBiblioteca.buscarLivroPorCodLivro(codLivro);
+        GerenciadorBiblioteca.atualizarStatusDevedor(usuario);
         atualizarLimiteEmprestimos(usuario);
 
         if (reservaEncontrada != null) {

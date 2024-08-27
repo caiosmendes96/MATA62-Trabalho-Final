@@ -9,7 +9,8 @@ public final class Professor extends Usuario implements Observador {
         this.definirTempoEmprestimo();
         this.contadorNotificacoes = 0;
     }
-    public void definirTempoEmprestimo(){
+
+    public void definirTempoEmprestimo() {
         super.setTempoEmprestimo(7);
     }
     public void atualizar(Livro livro) {
@@ -25,5 +26,6 @@ public final class Professor extends Usuario implements Observador {
     public int getContadorNotificacoes() {
         return contadorNotificacoes;
     }
-    
 }
+    
+
