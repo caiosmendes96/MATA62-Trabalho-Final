@@ -13,19 +13,6 @@ public final class GerenciadorBiblioteca {
         return emprestimos;
     }
 
-    public static void atualizarStatusDevedor(Usuario usuario) {
-        usuario.setDevedor(false);
-
-        for (Emprestimo emprestimo : emprestimos) {
-
-            if (emprestimo.getDataDevolucaoRealizada() == null
-                    && ChronoUnit.DAYS.between(emprestimo.getDataDevolucaoPrevista(), LocalDate.now()) > 0) {
-                usuario.setDevedor(true);
-
-            }
-
-        }
-    }
 
     public static void setEmprestimos(ArrayList<Emprestimo> emprestimos) {
         GerenciadorBiblioteca.emprestimos = emprestimos;
