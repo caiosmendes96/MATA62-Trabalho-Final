@@ -2,31 +2,37 @@ public class Exemplar {
 
     private static int id = 0;
 	private int codigo;
-    private String status;
+    private IStatusExemplar status;
 
     public Exemplar(){
         id++;
         this.codigo = id;
-        this.status = "disponivel";
+        this.status = new StatusDisponivelExemplar();
     }
 
     public int getCodigo() {
         return codigo;
     }
 
-    public String getStatus() {
+    public IStatusExemplar getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(IStatusExemplar status) {
         this.status = status;
     }
-    public void mudarStatus(){
-        if(this.status == "disponivel"){
-            this.status = "emprestado";
-        }else{
-            this.status = "disponivel";
-        }
+
+    public boolean emprestar() {
+        return status.emprestar(this);
+    }
+
+    public void consultar(Emprestimo emprestimo){
+        
+        status.consultar(emprestimo);
+    }
+
+    public String getNomeStatusExemplar(){
+        return status.getNomeStatus();
     }
 
 }

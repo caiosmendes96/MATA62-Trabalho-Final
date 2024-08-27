@@ -6,6 +6,7 @@ public abstract class Usuario {
     private int tempoEmprestimo;
     private int qtdReservas;
     private int limiteEmprestimo;
+    private boolean devedor;
 
     public Usuario(String nome, int codigo) {
         this.nome = nome;
@@ -58,6 +59,14 @@ public abstract class Usuario {
 
     public void setLimiteEmprestimo(int limiteEmprestimo) {
         this.limiteEmprestimo = limiteEmprestimo;
+    }
+
+    public boolean isDevedor() {
+        return devedor;
+    }
+
+    public void setDevedor(boolean devedor) {
+        this.devedor = devedor;
     }
 
 }

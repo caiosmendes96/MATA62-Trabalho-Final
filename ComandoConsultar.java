@@ -21,21 +21,17 @@ public class ComandoConsultar implements IComandoConsulta {
 
                 Usuario usuario = GerenciadorBiblioteca.buscarUsuarioPorCodigo(reserva.getCodUsuario());
                 
-                System.out.print("Nome usuário que fez a reserva: " + usuario.getNome());
+                System.out.print("Nome usuário que fez a reserva: " + usuario.getNome() + "\n");
             }  
         }
         for(Exemplar exemplar : livro.getExamplares()){
             System.out.println("--EXEMPLAR: " );
             System.out.println ("Código do exemplar: " + exemplar.getCodigo());
-            System.out.println ("Status: " + exemplar.getStatus());
+            System.out.println ("Status: " + exemplar.getNomeStatusExemplar());
 
-            if(exemplar.getStatus() == "emprestado"){
-                Emprestimo emprestimo = GerenciadorBiblioteca.buscarEmprestimoPorCodExemplar(exemplar.getCodigo());
-                System.out.println("--EXEMPLAR EMPRESTADO: " );
-                System.out.println("Nome usuário: " + GerenciadorBiblioteca.buscarUsuarioPorCodigo(emprestimo.getCodUsuario()).getNome());
-                System.out.println("Data empréstimo: " + emprestimo.getDataEmprestimo());
-                System.out.println("Data prevista para devolução: " + emprestimo.getDataDevolucaoPrevista());
-            }
+            Emprestimo emprestimo = GerenciadorBiblioteca.buscarEmprestimoPorCodExemplar(exemplar.getCodigo());
+
+            exemplar.consultar(emprestimo);
         }
     }
 
@@ -49,13 +45,10 @@ public class ComandoConsultar implements IComandoConsulta {
             
             System.out.println("Título do livro: " + GerenciadorBiblioteca.buscarLivroPorCodLivro(emprestimo.getCodLivro()).getTitulo() );
             System.out.println("Data empréstimo: " + emprestimo.getDataEmprestimo());
-            System.out.println("Status empréstimo:  " + emprestimo.getStatus());
-            if(emprestimo.getStatus() == "em curso"){
-                System.out.println("Data prevista para devolução: " + emprestimo.getDataDevolucaoPrevista());
-            }else{
-                System.out.println("Data realizada da devolução: " + emprestimo.getDataDevolucaoRealizada());
+            System.out.println("Status empréstimo:  " + emprestimo.getNomeStatusEmprestimo());
 
-            }
+            emprestimo.consultarData();
+            
         }
         System.out.println("--- RESERVAS \n");
         ArrayList <Reserva> reservasEncontradas = GerenciadorBiblioteca.buscarReservasPorCodUsuario(codUsuario);

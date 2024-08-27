@@ -24,36 +24,38 @@ public class ComandoEmprestar implements IComando {
         atualizarLimiteEmprestimos(usuario);
 
         if (reservaEncontrada != null) {
-            if ((usuario.getLimiteEmprestimo() > 0 || usuario.getClass().toString() == "Professor")) {
+            if (!usuario.isDevedor()) {
+                if ((usuario.getLimiteEmprestimo() > 0 || usuario.getClass().toString() == "Professor")) {
 
-                for (Exemplar exemplar : livro.getExamplares()) {
-                    if (exemplar.getStatus() == "disponivel") {
-                        GerenciadorBiblioteca.criarEmprestimo(codUsuario, codLivro, usuario.getTempoEmprestimo(),
-                                livro.getExamplares().get(0).getCodigo());
-                        exemplar.mudarStatus();
-                        encontrouExemplar = true;
-                        GerenciadorBiblioteca.removerReserva(reservaEncontrada);
-                        System.out.println("Criou empréstimo com sucesso! \n");
-                        System.out.println("Nome do usuário: " + usuario.getNome());
-                        System.out.println("Titulo do livro: " + livro.getTitulo());
-                        System.out.println("Código do exemplar: " + exemplar.getCodigo());
-                        break;
+                    for (Exemplar exemplar : livro.getExamplares()) {
+
+                        if(exemplar.emprestar()){
+                            GerenciadorBiblioteca.criarEmprestimo(codUsuario, codLivro, usuario.getTempoEmprestimo(),livro.getExamplares().get(0).getCodigo());
+                            encontrouExemplar = true;
+                            GerenciadorBiblioteca.removerReserva(reservaEncontrada);
+                            System.out.println("Criou empréstimo com sucesso! \n");
+                            System.out.println("Nome do usuário: " + usuario.getNome());
+                            System.out.println("Titulo do livro: " + livro.getTitulo());
+                            System.out.println("Código do exemplar: " + exemplar.getCodigo());
+                            break;
+                        }
                     }
+                    if (!encontrouExemplar) {
+                            System.out.println("Não foi possível criar o empréstimo, pois não exemplar disponível !");
+                }else {
+                    System.out.println("O usuário selecionado já alcançou o limite de emprestimos.");
                 }
-                if (!encontrouExemplar) {
-                    System.out.println("Não foi possível criar o empréstimo, pois não exemplar disponível !");
-                }
-
-            } else {
-                System.out.println("O usuário selecionado já alcançou o limite de emprestimos.");
+            }else {
+                System.out.println("Não foi possível criar o empréstimo, pois o usuario é devedor!");
             }
-
-        } else {
+        }else {
             System.out.println("Não foi possível criar o empréstimo, pois não existe uma reserva !");
+
+            }
         }
 
+        
     }
-
     public void atualizarLimiteEmprestimos(Usuario usuario) {
         ArrayList<Emprestimo> emprestimosEncontrados = new ArrayList<>();
         GerenciadorBiblioteca.buscarEmprestimosPorCodUsuario(usuario.getCodigo());

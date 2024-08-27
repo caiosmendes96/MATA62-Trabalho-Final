@@ -21,16 +21,10 @@ public class ComandoDevolver implements IComando {
         boolean encontrouEmprestimo = false;
 
         for (Emprestimo emprestimo : emprestimosEncontrados) {
-
             if (emprestimo.getCodLivro() == codLivro) {
-                if (emprestimo.getStatus() == "em curso") {
-                    usuario.setLimiteEmprestimo(usuario.getLimiteEmprestimo() + 1);
-                    emprestimo.setStatus("finalizado");
-                    emprestimo.setDataDevolucaoRealizada(LocalDate.now());
-
-                    encontrouEmprestimo = true;
-                    break;
-                }
+                emprestimo.finalizarEmprestimo(usuario);
+                encontrouEmprestimo = true;
+                break;
             }
         }
         System.out.println(encontrouEmprestimo ? "Devolução realizada com sucesso!"

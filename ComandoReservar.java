@@ -15,6 +15,10 @@ public class ComandoReservar implements IComando {
             System.out.println("Titulo do livro: " + livro.getTitulo());
             GerenciadorBiblioteca.criarReserva(codUsuario,codLivro);
             usuario.incrementarQtdReserva();
+
+            if (GerenciadorBiblioteca.verificarReservasParaObservador(codLivro)) {
+                livro.notificarObservadores();
+            }
         }else{
             System.out.println("Não foi possível criar a reserva! O usuário já possui 3 livros reservados! \n");
         }

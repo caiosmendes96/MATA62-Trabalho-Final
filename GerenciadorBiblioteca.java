@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.time.temporal.ChronoUnit;
+import java.time.LocalDate;
 
 public final class GerenciadorBiblioteca {
 
@@ -23,6 +25,35 @@ public final class GerenciadorBiblioteca {
         GerenciadorBiblioteca.reservas = reservas;
     }
 
+    public static boolean verificarReservasParaObservador(int codLivro) {
+        int contador = 0;
+
+        for (Reserva reserva : reservas) {
+            if (codLivro == reserva.getCodLivro()) {
+                contador += 1;
+            }
+        }
+
+        if (contador > 2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static void atualizarStatusDevedor(Usuario usuario) {
+        usuario.setDevedor(false);
+
+        for (Emprestimo emprestimo : emprestimos) {
+
+            if (emprestimo.getDataDevolucaoRealizada() == null
+                    && ChronoUnit.DAYS.between(emprestimo.getDataDevolucaoPrevista(), LocalDate.now()) > 0) {
+                usuario.setDevedor(true);
+
+            }
+
+        }
+    }
     public static Livro buscarLivroPorCodLivro(int codLivro){
 
        for(Livro livro : livros){

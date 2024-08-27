@@ -8,7 +8,7 @@ public class Emprestimo {
     private LocalDate dataDevolucaoRealizada;
     private int codUsuario;
     private int codExemplar;
-    private String status;
+    private IStatusEmprestimo status;
 
     public LocalDate getDataDevolucaoRealizada() {
         return dataDevolucaoRealizada;
@@ -18,13 +18,18 @@ public class Emprestimo {
         this.dataDevolucaoRealizada = dataDevolucaoRealizada;
     }
 
-    public String getStatus() {
-        return status;
-    }
 
-    public void setStatus(String status) {
+    public void setStatus(IStatusEmprestimo status) {
 
         this.status = status;
+    }
+
+    public String getNomeStatusEmprestimo(){
+        return status.getNomeStatus();
+    }
+
+    public void finalizarEmprestimo(Usuario usuario) {
+        status.finalizarEmprestimo(usuario, this);
     }
 
     public int getCodExemplar() {
@@ -51,9 +56,13 @@ public class Emprestimo {
         this.dataEmprestimo = date;
         this.dataDevolucaoPrevista = this.dataEmprestimo.plusDays(tempoEmprestimoUsuario);
         this.codExemplar = codExemplar;
-        this.status = "em curso";
+        this.status = new StatusEmCursoEmprestimo();
         this.dataDevolucaoRealizada = null;
 
+    }
+
+    public void consultarData(){
+        status.consultarData(this);
     }
 
     public LocalDate getDataEmprestimo() {

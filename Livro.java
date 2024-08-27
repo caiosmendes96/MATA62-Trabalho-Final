@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Livro {
+public class Livro implements Sujeito {
 
     private int codigo;
     private String titulo;
@@ -10,6 +10,7 @@ public class Livro {
     private String edicao;
     private int anoPublicacao;
     private List<Exemplar> examplares = new ArrayList<>();
+    private ArrayList<Observador> observadores;
 
  
 
@@ -20,6 +21,7 @@ public class Livro {
         this.autores = autores;
         this.edicao = edicao;
         this.anoPublicacao = anoPublicacao;
+        this.observadores = new ArrayList<>();
     }
 
     public int getCodigo() {
@@ -76,9 +78,31 @@ public class Livro {
         this.examplares.add(new Exemplar());
     }
 
-    public String toString() {
-        return "Codigo: " + this.codigo + "\n" + "Titulo: " + this.titulo + "\n" +  "Editora: " + this.editora  + "\n" + "Autores: " + this.autores + "\n" + "Edição: " + 
-        this.edicao + "\n" +"Ano de publicação:" + this.anoPublicacao + "\n";
+    public boolean temExemplarDisponivel(){
+
+        for (Exemplar exemplar : examplares) {
+            if (exemplar.getStatus() instanceof StatusDisponivelExemplar) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void registrarObservador(Observador o) {
+        observadores.add(o);
+    }
+
+    public void removerObservador(Observador o) {
+        int i = observadores.indexOf(o);
+        if (i >= 0) {
+            observadores.remove(i);
+        }
+    }
+
+    public void notificarObservadores() {
+        for (Observador observador : observadores) {
+            observador.atualizar(this);
+        }
     }
 
 }

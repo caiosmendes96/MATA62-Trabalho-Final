@@ -28,6 +28,7 @@ public class Console { // INVOKER DO COMMAND
         IComandoConsulta comandoConsultar = new ComandoConsultar();
         IComando comandoRersevar = new ComandoReservar();
         IComando comandoDevolver = new ComandoDevolver();
+        IComandoObservador ComandoObservador = new ComandoObservador();
 
         String command = "";
         
@@ -70,11 +71,27 @@ public class Console { // INVOKER DO COMMAND
                     comandoRersevar.executar(Integer.parseInt(codUsuario), Integer.parseInt(codLivro));
 
                     break;
+
                 case "usu":
                     codUsuario = command.split( " ")[1];
                     comandoConsultar.executarConsultaUsuario(Integer.parseInt(codUsuario));
 
                     break;
+
+                case "obs":
+                    codUsuario = command.split(" ")[1];
+                    codLivro = command.split(" ")[2];
+
+                    ComandoObservador.executarRegistroObservador(Integer.parseInt(codUsuario),Integer.parseInt(codLivro));
+                    break;
+
+                case "nft":
+                    codUsuario = command.split(" ")[1];
+
+                    ComandoObservador.executarConsultaNotificacoes(Integer.parseInt(codUsuario));
+                    
+                    break;
+
                 case "sair":
                     System.out.println("Certo. Até mais!");
 					System.out.println("Aplicação Encerrada.");
