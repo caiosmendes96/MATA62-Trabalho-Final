@@ -7,11 +7,23 @@ public abstract class Usuario {
     private int qtdReservas;
     private int limiteEmprestimo;
     private boolean devedor;
+    private IRegraUsuario regraUsuario;
 
-    public Usuario(String nome, int codigo) {
+
+
+    public Usuario(String nome, int codigo, IRegraUsuario regraUsuario) {
         this.nome = nome;
         this.codigo = codigo;
         this.qtdReservas = 0;
+        this.regraUsuario = regraUsuario;
+    }
+
+    public IRegraUsuario getRegraUsuario() {
+        return regraUsuario;
+    }
+
+    public void setRegraUsuario(IRegraUsuario regraUsuario) {
+        this.regraUsuario = regraUsuario;
     }
 
     public abstract void definirTempoEmprestimo();
@@ -67,6 +79,16 @@ public abstract class Usuario {
 
     public void setDevedor(boolean devedor) {
         this.devedor = devedor;
+    }
+
+    public boolean podeEmprestar(Livro livro){
+        return regraUsuario.validarEmprestimo(this, livro);
+    }
+
+    public void atualizarLimiteEmprestimos(){
+
+        this.limiteEmprestimo -=1 ;
+
     }
 
 }

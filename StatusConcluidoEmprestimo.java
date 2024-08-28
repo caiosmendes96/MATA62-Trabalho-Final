@@ -9,10 +9,6 @@ public class StatusConcluidoEmprestimo implements IStatusEmprestimo {
         return nomeStatus;
     }
 
-    public void setNomeStatus(String nomeStatus) {
-        this.nomeStatus = nomeStatus;
-    }
-
     @Override
     public void consultarData(Emprestimo emprestimo) {
 

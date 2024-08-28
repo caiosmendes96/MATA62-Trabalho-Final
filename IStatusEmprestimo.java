@@ -9,5 +9,5 @@ public interface IStatusEmprestimo {
 
     public String getNomeStatus();
 
-    public void setNomeStatus(String nomeStatus);
+
 }

@@ -22,8 +22,12 @@ public class Exemplar {
         this.status = status;
     }
 
-    public boolean emprestar() {
-        return status.emprestar(this);
+    public boolean podeEmprestar() {
+        return status.validarEmprestimo();
+    }
+
+    public void emprestar(){
+        status.emprestar(this);
     }
 
     public void consultar(Emprestimo emprestimo){

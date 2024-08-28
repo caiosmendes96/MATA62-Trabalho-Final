@@ -15,10 +15,13 @@ public class StatusDisponivelExemplar implements IStatusExemplar {
     }
 
     @Override
-    public boolean emprestar(Exemplar exemplar) {
-
-        exemplar.setStatus(new StatusEmprestadoExemplar());
+    public boolean validarEmprestimo() {
         return true;
+    }
+    
+    @Override
+    public void emprestar(Exemplar exemplar){
+        exemplar.setStatus(new StatusEmprestadoExemplar());
     }
 
     @Override

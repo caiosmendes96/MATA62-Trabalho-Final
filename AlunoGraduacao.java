@@ -1,7 +1,7 @@
 public final class AlunoGraduacao extends Usuario {
 
     public AlunoGraduacao(String nome, int codigo) {
-        super(nome, codigo);
+        super(nome, codigo, new RegraAlunoGraduacao());
         this.definirTempoEmprestimo();
         definirLimiteEmprestimo();
     }

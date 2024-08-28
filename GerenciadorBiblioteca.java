@@ -88,6 +88,21 @@ public final class GerenciadorBiblioteca {
         return null;
     }
 
+    public static Emprestimo buscarEmprestimoPorCodUsuarioECodLivro(int codUsuario, int codLivro){
+
+        ArrayList<Emprestimo> emprestimoEncontrados = buscarEmprestimosPorCodUsuario(codUsuario);
+
+        for (Emprestimo emprestimo : emprestimoEncontrados) {
+            if (emprestimo.getCodLivro() == codLivro) {
+                return emprestimo;
+            }
+        }
+        return null;
+
+
+
+    }
+
     public static ArrayList<Reserva> buscarUsuariosPorCodLivro(int codLivro) {
 
         ArrayList<Reserva> reservasAuxiliar = new ArrayList<>();
@@ -139,7 +154,8 @@ public final class GerenciadorBiblioteca {
     }
 
     public static void removerReserva(Reserva reserva) {
-
+        
+        System.out.println("Reserva removida com sucesso! \n");
         reservas.remove(reserva);
     }
 
@@ -175,5 +191,16 @@ public final class GerenciadorBiblioteca {
             }
         }
         return emprestimosEncontrados;
+    }
+
+    public static int buscarQuantidadeDeReservasPorLivro(int codLivro) {
+        int contador = 0;
+
+        for (Reserva reserva : reservas) {
+            if (codLivro == reserva.getCodLivro()) {
+                contador += 1;
+            }
+        }
+        return contador;
     }
 }

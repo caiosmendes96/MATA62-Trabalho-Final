@@ -23,7 +23,4 @@ public class StatusEmCursoEmprestimo implements IStatusEmprestimo {
         return nomeStatus;
     }
 
-    public void setNomeStatus(String nomeStatus) {
-        this.nomeStatus = nomeStatus;
-    }
 }

@@ -10,16 +10,16 @@ public class StatusEmprestadoExemplar implements IStatusExemplar {
         return nomeStatus;
     }
 
-    public void setNomeStatus(String nomeStatus) {
-        this.nomeStatus = nomeStatus;
-    }
+    @Override
+    public boolean validarEmprestimo(){
 
-    public boolean emprestar(Exemplar exemplar){
-
-        System.out.println("Esse exemplar já está emprestado ! \n");
         return false;
     }
+    @Override
+    public void emprestar(Exemplar exemplar){
 
+    }
+    @Override
     public void consultar(Emprestimo emprestimo){
 
         System.out.println("--EXEMPLAR EMPRESTADO: " );

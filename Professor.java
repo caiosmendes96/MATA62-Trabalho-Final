@@ -5,7 +5,7 @@ public final class Professor extends Usuario implements Observador {
     private int contadorNotificacoes;
 
     public Professor(String nome,int codigo){
-        super(nome,codigo);
+        super(nome,codigo, new RegraProfessor());
         this.definirTempoEmprestimo();
         this.contadorNotificacoes = 0;
     }

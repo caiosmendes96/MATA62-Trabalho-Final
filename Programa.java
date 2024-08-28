@@ -18,9 +18,17 @@ public class Programa {
 		Livro livro3 = new Livro(200, "Code Complete", "Microsoft Press", "Steve McConnell", "2º", 2014);
 		livro3.adicionarExemplar();
 
+		Livro livro4 = new Livro(201, "Agile Software Development,...", "Prentince Hall", "Robert Martin", "1º", 2002);
+		livro4.adicionarExemplar();
+
+		Livro livro5 = new Livro(300, "Refactoring: Improving the Design of Existing Code", "Addison- Wesley Professional", "Martin Fowler", "1º", 1999);
+		livro5.adicionarExemplar();
+
 		GerenciadorBiblioteca.adicionarLivro(livro1);
 		GerenciadorBiblioteca.adicionarLivro(livro2);
 		GerenciadorBiblioteca.adicionarLivro(livro3);
+		GerenciadorBiblioteca.adicionarLivro(livro4);
+		GerenciadorBiblioteca.adicionarLivro(livro5);
 
 
 		Usuario usuario2 = new AlunoGraduacao("João da Silva", 123);

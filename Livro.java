@@ -82,16 +82,6 @@ public class Livro implements Sujeito {
         this.examplares.add(new Exemplar());
     }
 
-    public boolean temExemplarDisponivel(){
-
-        for (Exemplar exemplar : examplares) {
-            if (exemplar.getStatus() instanceof StatusDisponivelExemplar) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public void registrarObservador(Observador o) {
         observadores.add(o);
     }
@@ -107,6 +97,16 @@ public class Livro implements Sujeito {
         for (Observador observador : observadores) {
             observador.atualizar(this);
         }
+    }
+
+    public int buscarQuantidadeDeExemplaresDisponiveis(){
+        int contador = 0;
+        for(Exemplar exemplar : examplares){
+
+            if(exemplar.getStatus() instanceof StatusDisponivelExemplar) contador++;
+                
+        }
+        return contador;
     }
 
 }

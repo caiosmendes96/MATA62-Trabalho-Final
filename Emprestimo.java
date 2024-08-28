@@ -18,6 +18,9 @@ public class Emprestimo {
         this.dataDevolucaoRealizada = dataDevolucaoRealizada;
     }
 
+    public IStatusEmprestimo getStatus(){
+        return this.status;
+    }
 
     public void setStatus(IStatusEmprestimo status) {
 
