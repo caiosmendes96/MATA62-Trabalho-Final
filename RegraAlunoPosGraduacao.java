@@ -1,5 +1,4 @@
-
-
+import java.util.ArrayList;
 
 public class RegraAlunoPosGraduacao implements IRegraUsuario {
 
@@ -7,7 +6,7 @@ public class RegraAlunoPosGraduacao implements IRegraUsuario {
     public boolean validarEmprestimo(Usuario usuario, Livro livro){
 
         Reserva reservaEncontrada = GerenciadorBiblioteca.buscarReservaPorCodLivroECodUsuario(usuario.getCodigo(),livro.getCodigo());
-        Emprestimo emprestimoEncontrado = GerenciadorBiblioteca.buscarEmprestimoPorCodUsuarioECodLivro(usuario.getCodigo(), livro.getCodigo());
+        ArrayList<Emprestimo> emprestimosEncontrados = GerenciadorBiblioteca.buscarEmprestimosPorCodUsuarioECodLivro(usuario.getCodigo(), livro.getCodigo());
 
         if (usuario.isDevedor()) {
             System.out.println("Não foi possível criar o empréstimo, pois o usuario é devedor! \n");
@@ -24,9 +23,14 @@ public class RegraAlunoPosGraduacao implements IRegraUsuario {
             return false;
         }
 
-        if(emprestimoEncontrado.getStatus() instanceof StatusEmCursoEmprestimo ){
-            System.out.println("Não foi possível criar o empréstimo, pois já existe um emprestimo desse livro em curso! \n");
-            return false;
+        if(emprestimosEncontrados != null){
+            for (Emprestimo emprestimo : emprestimosEncontrados){
+
+                if(emprestimo.getStatus().isEmCurso()){
+                    System.out.println("Não foi possível criar o empréstimo, pois já existe um emprestimo desse livro em curso! \n");
+                    return false;
+                }
+            }
         }
         
 

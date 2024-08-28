@@ -92,4 +92,8 @@ public class Emprestimo {
         this.dataDevolucaoPrevista = dataDevolucaoPrevista;
     }
 
+    public boolean podeDevolver(){
+        return status.validarDevolucao();
+    }
+
 }

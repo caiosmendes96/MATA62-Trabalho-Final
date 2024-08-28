@@ -88,20 +88,21 @@ public final class GerenciadorBiblioteca {
         return null;
     }
 
-    public static Emprestimo buscarEmprestimoPorCodUsuarioECodLivro(int codUsuario, int codLivro){
+    public static ArrayList<Emprestimo> buscarEmprestimosPorCodUsuarioECodLivro(int codUsuario,int codLivro) {
 
-        ArrayList<Emprestimo> emprestimoEncontrados = buscarEmprestimosPorCodUsuario(codUsuario);
+        ArrayList<Emprestimo> emprestimosEncontrados = new ArrayList<>();
+        
+        ArrayList<Emprestimo> emprestimosEncontradosPorUsuario = buscarEmprestimosPorCodUsuario(codUsuario);
 
-        for (Emprestimo emprestimo : emprestimoEncontrados) {
+        for (Emprestimo emprestimo : emprestimosEncontradosPorUsuario) {
+
             if (emprestimo.getCodLivro() == codLivro) {
-                return emprestimo;
+                emprestimosEncontrados.add(emprestimo);
             }
-        }
-        return null;
-
-
-
+        }        
+        return emprestimosEncontrados;
     }
+
 
     public static ArrayList<Reserva> buscarUsuariosPorCodLivro(int codLivro) {
 

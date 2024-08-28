@@ -16,6 +16,17 @@ public class StatusConcluidoEmprestimo implements IStatusEmprestimo {
     }
 
     @Override
+    public boolean validarDevolucao(){
+        return false;
+    }
+
+    @Override 
+    public boolean isEmCurso(){
+        return false;
+    }
+
+
+    @Override
     public void finalizarEmprestimo(Usuario usuario,Emprestimo emprestimo){
 
         System.out.println("Emprestimo já foi finalizado! \n");

@@ -7,6 +7,10 @@ public interface IStatusEmprestimo {
 
     public void finalizarEmprestimo(Usuario usuario,Emprestimo emprestimo);
 
+    public boolean validarDevolucao();
+
+    public boolean isEmCurso();
+
     public String getNomeStatus();
 
 

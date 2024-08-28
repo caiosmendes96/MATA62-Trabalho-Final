@@ -88,7 +88,10 @@ public abstract class Usuario {
     public void atualizarLimiteEmprestimos(){
 
         this.limiteEmprestimo -=1 ;
+    }
 
+    public boolean podeReservar(){
+        return this.qtdReservas < 3;
     }
 
 }

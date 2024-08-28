@@ -6,7 +6,7 @@ public class ComandoReservar implements IComando {
         Usuario usuario = GerenciadorBiblioteca.buscarUsuarioPorCodigo(codUsuario);
         Livro livro = GerenciadorBiblioteca.buscarLivroPorCodLivro(codLivro);
 
-        if (usuario.getQtdReservas() < 3) {
+        if (usuario.podeReservar()) {
 
             System.out.println("Criou reserva com sucesso! \n");
             System.out.println("Nome do usuário: " + usuario.getNome());

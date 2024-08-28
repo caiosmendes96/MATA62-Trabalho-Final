@@ -48,7 +48,7 @@ public class ComandoConsultar implements IComandoConsulta {
             
             System.out.println("Título do livro: " + GerenciadorBiblioteca.buscarLivroPorCodLivro(emprestimo.getCodLivro()).getTitulo() );
             System.out.println("Data empréstimo: " + emprestimo.getDataEmprestimo());
-            System.out.println("Status empréstimo:  " + emprestimo.getNomeStatusEmprestimo() + "\n ");
+            System.out.println("Status empréstimo:  " + emprestimo.getNomeStatusEmprestimo());
 
             emprestimo.consultarData();
             

@@ -18,6 +18,14 @@ public class StatusEmCursoEmprestimo implements IStatusEmprestimo {
         emprestimo.setStatus(new StatusConcluidoEmprestimo());
 
     }
+    @Override
+    public boolean validarDevolucao(){
+        return true;
+    }
+    @Override 
+    public boolean isEmCurso(){
+        return true;
+    }
 
     public String getNomeStatus() {
         return nomeStatus;
