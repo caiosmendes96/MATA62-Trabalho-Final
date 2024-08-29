@@ -4,24 +4,28 @@ public class ComandoDevolver implements IComando {
 
     public void executar(int codUsuario, int codLivro) {
 
-        Usuario usuario = GerenciadorBiblioteca.buscarUsuarioPorCodigo(codUsuario);
-        ArrayList <Emprestimo> emprestimosEncontrados = GerenciadorBiblioteca.buscarEmprestimosPorCodUsuarioECodLivro(codUsuario,codLivro);
+        Usuario usuario = GerenciadorBiblioteca.gerenciadorUsuarios.buscarUsuarioPorCodigo(codUsuario);
+        ArrayList<Emprestimo> emprestimosEncontrados = GerenciadorBiblioteca.gerenciadorEmprestimos
+                .buscarEmprestimosPorCodUsuarioECodLivro(codUsuario, codLivro);
 
-        if (emprestimosEncontrados != null){
+        if (emprestimosEncontrados != null) {
 
-            for (Emprestimo emprestimo : emprestimosEncontrados){
+            for (Emprestimo emprestimo : emprestimosEncontrados) {
 
-                if(emprestimo.podeDevolver()){ //boolean verifica o status do emprestimo encontrado para o livro, se estiver EM CURSO, retorna true
+                if (emprestimo.podeDevolver()) { // boolean verifica o status do emprestimo encontrado para o livro, se
+                                                 // estiver EM CURSO, retorna true
 
                     emprestimo.finalizarEmprestimo(usuario);
                     System.out.println("Devolução realizada com sucesso! \n");
-                }else{
-                    System.out.println("Não foi possivel realizar a devolução! Não existe empréstimo EM CURSO do livro para esse usuário!");
-                } 
+                } else {
+                    System.out.println(
+                            "Não foi possivel realizar a devolução! Não existe empréstimo EM CURSO do livro para esse usuário!");
+                }
             }
-               
-        }else{
-            System.out.println("Não foi possivel realizar a devolução! Não existe empréstimo do livro para esse usuário!");
+
+        } else {
+            System.out.println(
+                    "Não foi possivel realizar a devolução! Não existe empréstimo do livro para esse usuário!");
         }
     }
 
