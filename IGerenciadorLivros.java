@@ -8,4 +8,6 @@ public interface IGerenciadorLivros {
     ArrayList<Livro> getLivros();
 
     void setLivros(ArrayList<Livro> livros);
+
+    Exemplar buscarExemplarPorCodExemplar(Livro livro, int codExemplar);
 }

@@ -20,6 +20,21 @@ public final class GerenciadorLivros implements IGerenciadorLivros {
     }
 
     @Override
+    public Exemplar buscarExemplarPorCodExemplar(Livro livro, int codExemplar) {
+
+        if (livro.getExemplares() != null) {
+
+            for (Exemplar exemplar : livro.getExemplares()) {
+                if (codExemplar == exemplar.getCodigo()) {
+                    return exemplar;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    @Override
     public ArrayList<Livro> getLivros() {
         return livros;
     }

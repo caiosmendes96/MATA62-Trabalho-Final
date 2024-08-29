@@ -1,10 +1,9 @@
 
 public class StatusEmprestadoExemplar implements IStatusExemplar {
 
-    private String nomeStatus = "Emprestado";
-
+    @Override
     public String getNomeStatus() {
-        return nomeStatus;
+        return "Emprestado";
     }
 
     @Override
@@ -21,11 +20,17 @@ public class StatusEmprestadoExemplar implements IStatusExemplar {
     @Override
     public void consultar(Emprestimo emprestimo) {
 
-        System.out.println("--EXEMPLAR EMPRESTADO: ");
+        System.out.println("Dados do usuário que realizou o empréstimo: ");
         System.out.println("Nome usuário: " + GerenciadorBiblioteca.getGerenciadorUsuarios()
                 .buscarUsuarioPorCodigo(emprestimo.getCodUsuario()).getNome());
         System.out.println("Data empréstimo: " + emprestimo.getDataEmprestimo());
         System.out.println("Data prevista para devolução: " + emprestimo.getDataDevolucaoPrevista());
+    }
+
+    @Override
+    public void devolver(Exemplar exemplar) {
+
+        exemplar.setStatus(new StatusDisponivelExemplar());
     }
 
 }

@@ -3,15 +3,10 @@
 
 
 public class StatusDisponivelExemplar implements IStatusExemplar {
-
-    private String nomeStatus = "Disponível";
-
+    
+    @Override
     public String getNomeStatus() {
-        return nomeStatus;
-    }
-
-    public void setNomeStatus(String nomeStatus) {
-        this.nomeStatus = nomeStatus;
+        return "Disponível";
     }
 
     @Override
@@ -27,6 +22,11 @@ public class StatusDisponivelExemplar implements IStatusExemplar {
     @Override
     public void consultar(Emprestimo emprestimo){
 
+    }
+
+    @Override 
+    public void devolver(Exemplar exemplar){
+        
     }
 
 

@@ -3,10 +3,9 @@
 
 public class StatusConcluidoEmprestimo implements IStatusEmprestimo {
 
-    private String nomeStatus = "Concluido";
-
+    @Override
     public String getNomeStatus() {
-        return nomeStatus;
+        return "Concluido";
     }
 
     @Override
@@ -24,7 +23,6 @@ public class StatusConcluidoEmprestimo implements IStatusEmprestimo {
     public boolean isEmCurso(){
         return false;
     }
-
 
     @Override
     public void finalizarEmprestimo(Usuario usuario,Emprestimo emprestimo){

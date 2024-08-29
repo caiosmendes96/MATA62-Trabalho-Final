@@ -2,8 +2,6 @@ import java.time.LocalDate;
 
 public class StatusEmCursoEmprestimo implements IStatusEmprestimo {
 
-    private String nomeStatus = "Em curso";
-
     @Override
     public void consultarData(Emprestimo emprestimo) {
 
@@ -26,9 +24,9 @@ public class StatusEmCursoEmprestimo implements IStatusEmprestimo {
     public boolean isEmCurso(){
         return true;
     }
-
+    @Override
     public String getNomeStatus() {
-        return nomeStatus;
+        return "Em curso";
     }
 
 }

@@ -25,14 +25,28 @@ public class Programa {
 				"Addison- Wesley Professional", "Martin Fowler", "1º", 1999);
 		livro5.adicionarExemplar();
 
+		Livro livro6 = new Livro(301, "Software Metrics: A Rigorous and Practical Approach", "CRC Press",
+				"Norman Fenton, James Bieman", "3º", 2014);
+
+		Livro livro7 = new Livro(400, "Design Patterns: Elements of Reusable Object-Oriented Software",
+				"Addison- Wesley Professional", "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides", "1º", 1994);
+		livro7.adicionarExemplar();
+		livro7.adicionarExemplar();
+
+		Livro livro8 = new Livro(401, "UML Distilled: A Brief Guide to the Standard Object Modeling Language",
+				"Addison- Wesley Professional", "Martin Fowler", "3º", 2003);
+
 		GerenciadorBiblioteca.getGerenciadorLivros().adicionarLivro(livro1);
 		GerenciadorBiblioteca.getGerenciadorLivros().adicionarLivro(livro2);
 		GerenciadorBiblioteca.getGerenciadorLivros().adicionarLivro(livro3);
 		GerenciadorBiblioteca.getGerenciadorLivros().adicionarLivro(livro4);
 		GerenciadorBiblioteca.getGerenciadorLivros().adicionarLivro(livro5);
+		GerenciadorBiblioteca.getGerenciadorLivros().adicionarLivro(livro6);
+		GerenciadorBiblioteca.getGerenciadorLivros().adicionarLivro(livro7);
+		GerenciadorBiblioteca.getGerenciadorLivros().adicionarLivro(livro8);
 
 		Usuario usuario2 = new AlunoGraduacao("João da Silva", 123);
-		Usuario usuario3 = new AlunoPosGraduacao("Luiz Fernando Rodrigues", 456);
+		Usuario usuario3 = new AlunoGraduacao("Luiz Fernando Rodrigues", 456);
 		Usuario usuario4 = new AlunoPosGraduacao("Pedro Paulo", 789);
 		Usuario usuario1 = new Professor("Calos lucena", 100);
 
@@ -42,12 +56,6 @@ public class Programa {
 		GerenciadorBiblioteca.getGerenciadorUsuarios().adicionarUsuario(usuario4);
 
 		console.lerComando();
-		// System.out.println("Tempo emprestimo usuario 1: " +
-		// usuario1.getTempoEmprestimo());
-		// System.out.println("Tempo emprestimo usuario 2: " +
-		// usuario2.getTempoEmprestimo());
-		// System.out.println("Tempo emprestimo usuario 3: " +
-		// usuario3.getTempoEmprestimo());
 
 	}
 

@@ -14,7 +14,7 @@ public class ComandoEmprestar implements IComando {
         // "devedor" caso o usuario esteja
         // devendo algum emprestimo
 
-        for (Exemplar exemplar : livro.getExamplares()) {
+        for (Exemplar exemplar : livro.getExemplares()) {
 
             if (exemplar.podeEmprestar()) { // boolean verifica se o exemplar atual está disponivel
                 encontrouExemplar = true;
@@ -22,14 +22,15 @@ public class ComandoEmprestar implements IComando {
                                                     // emprestado (passar nas regras)
 
                     GerenciadorBiblioteca.getGerenciadorEmprestimos().criarEmprestimo(codUsuario, codLivro,
-                            usuario.getTempoEmprestimo(), livro.getExamplares().get(0).getCodigo());
+                            usuario.getTempoEmprestimo(), exemplar.getCodigo());
 
                     System.out.println("Criou empréstimo com sucesso! \n");
                     System.out.println("Nome do usuário: " + usuario.getNome());
                     System.out.println("Titulo do livro: " + livro.getTitulo());
                     System.out.println("Código do exemplar: " + exemplar.getCodigo());
-                    if (reservaEncontrada != null) { // Se tiver uma reserva para esse livro, remover a reserva.
-                        GerenciadorBiblioteca.getGerenciadorReservas().removerReserva(reservaEncontrada);
+                    if (reservaEncontrada != null) { // Se tiver uma reserva para esse livro, finalizar a reserva.
+                        reservaEncontrada.alterarStatus();
+                        System.out.println("Reserva ativa foi finalizada com sucesso! \n");
                     }
                     usuario.atualizarLimiteEmprestimos(); // altera quantidade de emprestimo do usuario
                     exemplar.emprestar(); // altera o status do exemplar para emprestado

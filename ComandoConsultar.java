@@ -6,12 +6,10 @@ public class ComandoConsultar implements IComandoConsulta {
     public void executarConsultaLivro(int codLivro) {
 
         Livro livro = GerenciadorBiblioteca.getGerenciadorLivros().buscarLivroPorCodLivro(codLivro);
-        ArrayList<Reserva> reservasEncontradas = GerenciadorBiblioteca.getGerenciadorReservas().getReservas();// ????
-
+        ArrayList<Reserva> reservasEncontradas = GerenciadorBiblioteca.getGerenciadorReservas().getReservas();
+        System.out.println("");
         System.out.println("***--- CONSULTA LIVRO ---*** \n");
-
-        System.out.println("---Titulo do livro: " + "\n" + livro.getTitulo());
-
+        System.out.println("-----Titulo do livro: " + "\n" + livro.getTitulo());
         System.out.println("Quantidade de reservas: " + reservasEncontradas.size());
 
         if (reservasEncontradas.size() > 0) {
@@ -24,7 +22,7 @@ public class ComandoConsultar implements IComandoConsulta {
                 System.out.print("Nome usuário que fez a reserva: " + usuario.getNome() + "\n");
             }
         }
-        for (Exemplar exemplar : livro.getExamplares()) {
+        for (Exemplar exemplar : livro.getExemplares()) {
             System.out.println("--EXEMPLAR: ");
             System.out.println("Código do exemplar: " + exemplar.getCodigo());
             System.out.println("Status: " + exemplar.getNomeStatusExemplar());
@@ -48,6 +46,7 @@ public class ComandoConsultar implements IComandoConsulta {
         System.out.println("--- EMPRÉSTIMOS \n");
 
         for (Emprestimo emprestimo : emprestimoEncontrados) {
+            System.out.println("");
 
             System.out.println("Título do livro: " + GerenciadorBiblioteca.getGerenciadorLivros()
                     .buscarLivroPorCodLivro(emprestimo.getCodLivro()).getTitulo());
@@ -65,6 +64,7 @@ public class ComandoConsultar implements IComandoConsulta {
             System.out.println("Título do livro: " + GerenciadorBiblioteca.getGerenciadorLivros()
                     .buscarLivroPorCodLivro(reserva.getCodLivro()).getTitulo());
             System.out.println("Data solicitação: " + reserva.getDataSolicitacao() + "\n ");
+            System.out.println("Status: " + reserva.getNomeStatus() + "\n ");
         }
 
     }

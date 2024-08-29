@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Livro implements Sujeito {
 
@@ -9,7 +8,7 @@ public class Livro implements Sujeito {
     private String autores;
     private String edicao;
     private int anoPublicacao;
-    private List<Exemplar> examplares = new ArrayList<>();
+    private ArrayList<Exemplar> exemplares = new ArrayList<>();
     private ArrayList<Observador> observadores;
 
     public Livro(int codigo, String titulo, String editora, String autores, String edicao, int anoPublicacao) {
@@ -70,16 +69,16 @@ public class Livro implements Sujeito {
         this.anoPublicacao = anoPublicacao;
     }
 
-    public List<Exemplar> getExamplares() {
-        return examplares;
+    public ArrayList<Exemplar> getExemplares() {
+        return exemplares;
     }
 
-    public void setExamplares(List<Exemplar> examplares) {
-        this.examplares = examplares;
+    public void setExemplares(ArrayList<Exemplar> exemplares) {
+        this.exemplares = exemplares;
     }
 
     public void adicionarExemplar() {
-        this.examplares.add(new Exemplar());
+        this.exemplares.add(new Exemplar());
     }
 
     public void registrarObservador(Observador o) {
@@ -99,14 +98,37 @@ public class Livro implements Sujeito {
         }
     }
 
-    public int buscarQuantidadeDeExemplaresDisponiveis(){
+    public int buscarQuantidadeDeExemplaresDisponiveis() {
         int contador = 0;
-        for(Exemplar exemplar : examplares){
+        for (Exemplar exemplar : exemplares) {
 
-            if(exemplar.getStatus() instanceof StatusDisponivelExemplar) contador++;
-                
+            if (exemplar.getStatus() instanceof StatusDisponivelExemplar)
+                contador++;
+
         }
         return contador;
+    }
+
+    public Exemplar buscarExemplarEmprestadoPorCodLivro(int codLivro) {
+
+        if (exemplares != null) {
+            for (Exemplar exemplar : exemplares) {
+
+                if (exemplar.getStatus() instanceof StatusEmprestadoExemplar) {
+                    return exemplar;
+                }
+            }
+        }
+        return null;
+
+    }
+
+    public ArrayList<Observador> getObservadores() {
+        return observadores;
+    }
+
+    public void setObservadores(ArrayList<Observador> observadores) {
+        this.observadores = observadores;
     }
 
 }

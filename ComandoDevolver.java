@@ -7,6 +7,8 @@ public class ComandoDevolver implements IComando {
         Usuario usuario = GerenciadorBiblioteca.getGerenciadorUsuarios().buscarUsuarioPorCodigo(codUsuario);
         ArrayList<Emprestimo> emprestimosEncontrados = GerenciadorBiblioteca.getGerenciadorEmprestimos()
                 .buscarEmprestimosPorCodUsuarioECodLivro(codUsuario, codLivro);
+        Livro livro = GerenciadorBiblioteca.getGerenciadorLivros().buscarLivroPorCodLivro(codLivro);
+        boolean encontrouEmprestimoEmAberto = false;
 
         if (emprestimosEncontrados != null) {
 
@@ -15,17 +17,19 @@ public class ComandoDevolver implements IComando {
                 if (emprestimo.podeDevolver()) { // boolean verifica o status do emprestimo encontrado para o livro, se
                                                  // estiver EM CURSO, retorna true
 
+                    encontrouEmprestimoEmAberto = true;
+                    Exemplar exemplar = GerenciadorBiblioteca.getGerenciadorLivros().buscarExemplarPorCodExemplar(
+                            livro,
+                            emprestimo.getCodExemplar());
+                    exemplar.devolver();
                     emprestimo.finalizarEmprestimo(usuario);
                     System.out.println("Devolução realizada com sucesso! \n");
-                } else {
-                    System.out.println(
-                            "Não foi possivel realizar a devolução! Não existe empréstimo EM CURSO do livro para esse usuário!");
                 }
             }
+            if (!encontrouEmprestimoEmAberto)
+                System.out.println(
+                        "Não foi possivel realizar a devolução! Não existe empréstimo EM CURSO do livro para esse usuário!");
 
-        } else {
-            System.out.println(
-                    "Não foi possivel realizar a devolução! Não existe empréstimo do livro para esse usuário!");
         }
     }
 

@@ -39,4 +39,5 @@ public final class GerenciadorBiblioteca {
     public static void setGerenciadorLivros(IGerenciadorLivros gerenciadorLivros) {
         GerenciadorBiblioteca.gerenciadorLivros = gerenciadorLivros;
     }
+
 }
