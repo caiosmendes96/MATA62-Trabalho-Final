@@ -7,12 +7,11 @@ public class ComandoConsultar implements IComandoConsulta {
         // COMANDO LIV
 
         Livro livro = GerenciadorBiblioteca.buscarLivroPorCodLivro(codLivro);
-        ArrayList <Reserva> reservasEncontradas = GerenciadorBiblioteca.getReservas();
-
+        
+        ArrayList <Reserva> reservasEncontradas = GerenciadorBiblioteca.buscarReservasPorCodLivro(codLivro);
+        System.out.println("");
         System.out.println("***--- CONSULTA LIVRO ---*** \n");
-
-        System.out.println("---Titulo do livro: " + "\n" + livro.getTitulo());
-
+        System.out.println("-----Titulo do livro: " + "\n" + livro.getTitulo());
         System.out.println("Quantidade de reservas: " + reservasEncontradas.size());
 
         if(reservasEncontradas.size() > 0){
@@ -20,12 +19,11 @@ public class ComandoConsultar implements IComandoConsulta {
             for(Reserva reserva : reservasEncontradas){
 
                 Usuario usuario = GerenciadorBiblioteca.buscarUsuarioPorCodigo(reserva.getCodUsuario());
-                
                 System.out.print("Nome usuário que fez a reserva: " + usuario.getNome() + "\n");
             }  
         }
-        for(Exemplar exemplar : livro.getExamplares()){
-            System.out.println("--EXEMPLAR: " );
+        for(Exemplar exemplar : livro.getExemplares()){
+            System.out.println("---EXEMPLAR: " );
             System.out.println ("Código do exemplar: " + exemplar.getCodigo());
             System.out.println ("Status: " + exemplar.getNomeStatusExemplar());
 
@@ -45,7 +43,7 @@ public class ComandoConsultar implements IComandoConsulta {
         System.out.println("--- EMPRÉSTIMOS \n");
         
         for (Emprestimo emprestimo : emprestimoEncontrados){
-            
+            System.out.println("");
             System.out.println("Título do livro: " + GerenciadorBiblioteca.buscarLivroPorCodLivro(emprestimo.getCodLivro()).getTitulo() );
             System.out.println("Data empréstimo: " + emprestimo.getDataEmprestimo());
             System.out.println("Status empréstimo:  " + emprestimo.getNomeStatusEmprestimo());
@@ -57,9 +55,9 @@ public class ComandoConsultar implements IComandoConsulta {
         System.out.println("--- RESERVAS \n");
 
         for(Reserva reserva : reservasEncontradas){  
-            System.out.println("***");  
             System.out.println("Título do livro: " + GerenciadorBiblioteca.buscarLivroPorCodLivro(reserva.getCodLivro()).getTitulo() );
-            System.out.println("Data solicitação: " + reserva.getDataSolicitacao() + "\n ");
+            System.out.println("Data solicitação: " + reserva.getDataSolicitacao());
+            System.out.println("Status: " + reserva.getNomeStatus()+ "\n ");
         }
 
 

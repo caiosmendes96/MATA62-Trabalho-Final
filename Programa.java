@@ -23,16 +23,28 @@ public class Programa {
 
 		Livro livro5 = new Livro(300, "Refactoring: Improving the Design of Existing Code", "Addison- Wesley Professional", "Martin Fowler", "1º", 1999);
 		livro5.adicionarExemplar();
+		livro5.adicionarExemplar();
+
+		Livro livro6 = new Livro(301, "Software Metrics: A Rigorous and Practical Approach", "CRC Press", "Norman Fenton, James Bieman", "3º", 2014);
+
+		Livro livro7 = new Livro(400, "Design Patterns: Elements of Reusable Object-Oriented Software", "Addison- Wesley Professional", "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides", "1º", 1994);
+		livro7.adicionarExemplar();
+		livro7.adicionarExemplar();
+
+		Livro livro8 = new Livro(401, "UML Distilled: A Brief Guide to the Standard Object Modeling Language", "Addison- Wesley Professional", "Martin Fowler", "3º", 2003);
 
 		GerenciadorBiblioteca.adicionarLivro(livro1);
 		GerenciadorBiblioteca.adicionarLivro(livro2);
 		GerenciadorBiblioteca.adicionarLivro(livro3);
 		GerenciadorBiblioteca.adicionarLivro(livro4);
 		GerenciadorBiblioteca.adicionarLivro(livro5);
+		GerenciadorBiblioteca.adicionarLivro(livro6);
+		GerenciadorBiblioteca.adicionarLivro(livro7);
+		GerenciadorBiblioteca.adicionarLivro(livro8);
 
 
 		Usuario usuario2 = new AlunoGraduacao("João da Silva", 123);
-		Usuario usuario3 = new AlunoPosGraduacao("Luiz Fernando Rodrigues", 456);
+		Usuario usuario3 = new AlunoGraduacao("Luiz Fernando Rodrigues", 456);
 		Usuario usuario4 = new AlunoPosGraduacao("Pedro Paulo", 789);
 		Usuario usuario1 = new Professor("Calos lucena", 100);
 
@@ -42,9 +54,6 @@ public class Programa {
 		GerenciadorBiblioteca.adicionarUsuario(usuario4);
 		
 		console.lerComando();
-		//System.out.println("Tempo emprestimo usuario 1: " + usuario1.getTempoEmprestimo());
-		//System.out.println("Tempo emprestimo usuario 2: " + usuario2.getTempoEmprestimo());
-		//System.out.println("Tempo emprestimo usuario 3: " + usuario3.getTempoEmprestimo());
 
 		
 	}

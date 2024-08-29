@@ -154,12 +154,6 @@ public final class GerenciadorBiblioteca {
         reservas.add(new Reserva(codUsuario, codLivro));
     }
 
-    public static void removerReserva(Reserva reserva) {
-        
-        System.out.println("Reserva removida com sucesso! \n");
-        reservas.remove(reserva);
-    }
-
     public static Emprestimo buscarEmprestimoPorCodExemplar(int codExemplar) {
 
         for (Emprestimo emprestimo : emprestimos) {
@@ -203,5 +197,19 @@ public final class GerenciadorBiblioteca {
             }
         }
         return contador;
+    }
+
+    public static Exemplar buscarExemplarPorCodExemplar(Livro livro, int codExemplar){
+
+        if (livro.getExemplares() != null){
+            
+            for(Exemplar exemplar : livro.getExemplares()){
+                if(codExemplar == exemplar.getCodigo()){
+                    return exemplar;
+                }
+            }
+        }
+
+        return null;
     }
 }

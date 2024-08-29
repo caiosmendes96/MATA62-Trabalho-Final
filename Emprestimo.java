@@ -27,13 +27,6 @@ public class Emprestimo {
         this.status = status;
     }
 
-    public String getNomeStatusEmprestimo(){
-        return status.getNomeStatus();
-    }
-
-    public void finalizarEmprestimo(Usuario usuario) {
-        status.finalizarEmprestimo(usuario, this);
-    }
 
     public int getCodExemplar() {
         return codExemplar;
@@ -64,9 +57,7 @@ public class Emprestimo {
 
     }
 
-    public void consultarData(){
-        status.consultarData(this);
-    }
+
 
     public LocalDate getDataEmprestimo() {
         return dataEmprestimo;
@@ -92,8 +83,22 @@ public class Emprestimo {
         this.dataDevolucaoPrevista = dataDevolucaoPrevista;
     }
 
+    //MÉTODOS RELACIONADOS AO PADRÃO STATE DO STATUS
     public boolean podeDevolver(){
         return status.validarDevolucao();
     }
+
+    public String getNomeStatusEmprestimo(){
+        return status.getNomeStatus();
+    }
+
+    public void finalizarEmprestimo(Usuario usuario) {
+        status.finalizarEmprestimo(usuario, this);
+    }
+
+    public void consultarData(){
+        status.consultarData(this);
+    }
+
 
 }

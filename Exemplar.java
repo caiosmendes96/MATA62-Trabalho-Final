@@ -22,6 +22,9 @@ public class Exemplar {
         this.status = status;
     }
 
+
+    // MÉTODOS RELACIONADOS AO PADRÃO STATE STATUS
+
     public boolean podeEmprestar() {
         return status.validarEmprestimo();
     }
@@ -33,6 +36,10 @@ public class Exemplar {
     public void consultar(Emprestimo emprestimo){
         
         status.consultar(emprestimo);
+    }
+
+    public void devolver(){
+        status.devolver(this);
     }
 
     public String getNomeStatusExemplar(){

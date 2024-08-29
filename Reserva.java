@@ -5,6 +5,9 @@ public class Reserva {
     private int codLivro;
     private int codUsuario;
     private LocalDate dataSolicitacao;
+    private IStatusReserva status;
+
+
 
     public LocalDate getDataSolicitacao() {
         return dataSolicitacao;
@@ -21,6 +24,15 @@ public class Reserva {
         this.codLivro = codLivro;
         this.codUsuario = codUsuario;
         this.dataSolicitacao = date;
+        this.status = new StatusAtivaReserva();
+    }
+
+    public IStatusReserva getStatus() {
+        return status;
+    }
+
+    public void setStatus(IStatusReserva status) {
+        this.status = status;
     }
     
     public int getCodLivro() {
@@ -39,6 +51,13 @@ public class Reserva {
         this.codUsuario = codUsuario;
     }
 
-   
+    // MÉTODOS RELACIONADOS AO PADRÃO STATE STATUS
+    
+    public void alterarStatus(){
+        status.alterarStatus(this);
+    }
+    public String getNomeStatus(){
+        return this.status.getNomeStatus();
+    }
 
 }

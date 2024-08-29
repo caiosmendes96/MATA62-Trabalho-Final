@@ -9,7 +9,9 @@ public interface IStatusExemplar {
     public void emprestar(Exemplar exemplar);
 
     public void consultar(Emprestimo emprestimo);
-    
+
+    public void devolver(Exemplar exemplar);
+
     public String getNomeStatus();
 
 
