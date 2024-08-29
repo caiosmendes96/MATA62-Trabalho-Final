@@ -7,7 +7,7 @@ public class RegraAlunoPosGraduacao implements IRegraUsuario {
 
         Reserva reservaEncontrada = GerenciadorBiblioteca.getGerenciadorReservas()
                 .buscarReservaPorCodLivroECodUsuario(usuario.getCodigo(), livro.getCodigo());
-        ArrayList<Emprestimo> emprestimosEncontrados = GerenciadorBiblioteca.gerenciadorEmprestimos
+        ArrayList<Emprestimo> emprestimosEncontrados = GerenciadorBiblioteca.getGerenciadorEmprestimos()
                 .buscarEmprestimosPorCodUsuarioECodLivro(usuario.getCodigo(), livro.getCodigo());
 
         if (usuario.isDevedor()) {

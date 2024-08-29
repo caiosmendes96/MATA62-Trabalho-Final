@@ -1,27 +1,31 @@
 import java.util.ArrayList;
 
-public final class GerenciadorLivros {
+public final class GerenciadorLivros implements IGerenciadorLivros {
 
     private static ArrayList<Livro> livros = new ArrayList<>();
 
-    public static ArrayList<Livro> getLivros() {
-        return livros;
-    }
-
-    public static void setLivros(ArrayList<Livro> livros) {
-        GerenciadorLivros.livros = livros;
-    }
-
-    public static void adicionarLivro(Livro livro) {
+    @Override
+    public void adicionarLivro(Livro livro) {
         livros.add(livro);
     }
 
-    public static Livro buscarLivroPorCodLivro(int codLivro) {
+    @Override
+    public Livro buscarLivroPorCodLivro(int codLivro) {
         for (Livro livro : livros) {
             if (livro.getCodigo() == codLivro) {
                 return livro;
             }
         }
         return null;
+    }
+
+    @Override
+    public ArrayList<Livro> getLivros() {
+        return livros;
+    }
+
+    @Override
+    public void setLivros(ArrayList<Livro> livros) {
+        GerenciadorLivros.livros = livros;
     }
 }

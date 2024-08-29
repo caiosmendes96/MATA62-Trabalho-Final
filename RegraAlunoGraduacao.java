@@ -5,9 +5,9 @@ public class RegraAlunoGraduacao implements IRegraUsuario {
     @Override
     public boolean validarEmprestimo(Usuario usuario, Livro livro) {
 
-        Reserva reservaEncontrada = GerenciadorBiblioteca.gerenciadorReservas
+        Reserva reservaEncontrada = GerenciadorBiblioteca.getGerenciadorReservas()
                 .buscarReservaPorCodLivroECodUsuario(usuario.getCodigo(), livro.getCodigo());
-        ArrayList<Emprestimo> emprestimosEncontrados = GerenciadorBiblioteca.gerenciadorEmprestimos
+        ArrayList<Emprestimo> emprestimosEncontrados = GerenciadorBiblioteca.getGerenciadorEmprestimos()
                 .buscarEmprestimosPorCodUsuarioECodLivro(usuario.getCodigo(), livro.getCodigo());
 
         if (usuario.isDevedor()) {
@@ -22,7 +22,7 @@ public class RegraAlunoGraduacao implements IRegraUsuario {
         }
 
         if (reservaEncontrada == null
-                && livro.buscarQuantidadeDeExemplaresDisponiveis() < GerenciadorBiblioteca.gerenciadorReservas
+                && livro.buscarQuantidadeDeExemplaresDisponiveis() < GerenciadorBiblioteca.getGerenciadorReservas()
                         .buscarQuantidadeDeReservasPorLivro(livro.getCodigo())) {
             System.out.println(
                     "Não foi possível criar o empréstimo, todos os exemplares estão reservados e você não tem reserva para esse livro! \n");

@@ -3,8 +3,8 @@ public class ComandoReservar implements IComando {
 
     public void executar(int codUsuario, int codLivro) {
 
-        Usuario usuario = GerenciadorBiblioteca.gerenciadorUsuarios.buscarUsuarioPorCodigo(codUsuario);
-        Livro livro = GerenciadorBiblioteca.gerenciadorLivros.buscarLivroPorCodLivro(codLivro);
+        Usuario usuario = GerenciadorBiblioteca.getGerenciadorUsuarios().buscarUsuarioPorCodigo(codUsuario);
+        Livro livro = GerenciadorBiblioteca.getGerenciadorLivros().buscarLivroPorCodLivro(codLivro);
 
         if (usuario.podeReservar()) {
 
@@ -12,11 +12,11 @@ public class ComandoReservar implements IComando {
             System.out.println("Nome do usuário: " + usuario.getNome());
             System.out.println("Titulo do livro: " + livro.getTitulo());
 
-            GerenciadorBiblioteca.gerenciadorReservas.criarReserva(codUsuario, codLivro);
+            GerenciadorBiblioteca.getGerenciadorReservas().criarReserva(codUsuario, codLivro);
 
             usuario.incrementarQtdReserva();
 
-            if (GerenciadorBiblioteca.gerenciadorReservas.verificarReservasParaObservador(codLivro)) {
+            if (GerenciadorBiblioteca.getGerenciadorReservas().verificarReservasParaObservador(codLivro)) {
                 livro.notificarObservadores();
             }
         } else {

@@ -1,27 +1,22 @@
 import java.util.ArrayList;
 
-public final class GerenciadorReservas {
+public final class GerenciadorReservas implements IGerenciadorReservas {
 
     private static ArrayList<Reserva> reservas = new ArrayList<>();
 
-    public static ArrayList<Reserva> getReservas() {
-        return reservas;
-    }
-
-    public static void setReservas(ArrayList<Reserva> reservas) {
-        GerenciadorReservas.reservas = reservas;
-    }
-
-    public static void criarReserva(int codUsuario, int codLivro) {
+    @Override
+    public void criarReserva(int codUsuario, int codLivro) {
         reservas.add(new Reserva(codUsuario, codLivro));
     }
 
-    public static void removerReserva(Reserva reserva) {
+    @Override
+    public void removerReserva(Reserva reserva) {
         reservas.remove(reserva);
         System.out.println("Reserva removida com sucesso! \n");
     }
 
-    public static Reserva buscarReservaPorCodLivroECodUsuario(int codUsuario, int codLivro) {
+    @Override
+    public Reserva buscarReservaPorCodLivroECodUsuario(int codUsuario, int codLivro) {
         ArrayList<Reserva> reservasEncontradas = buscarReservasPorCodLivro(codLivro);
         for (Reserva reserva : reservasEncontradas) {
             if (reserva.getCodUsuario() == codUsuario) {
@@ -31,7 +26,13 @@ public final class GerenciadorReservas {
         return null;
     }
 
-    public static ArrayList<Reserva> buscarReservasPorCodLivro(int codLivro) {
+    @Override
+    public ArrayList<Reserva> getReservas() {
+        return reservas;
+    }
+
+    @Override
+    public ArrayList<Reserva> buscarReservasPorCodLivro(int codLivro) {
         ArrayList<Reserva> reservasAuxiliar = new ArrayList<>();
         for (Reserva reserva : reservas) {
             if (reserva.getCodLivro() == codLivro) {
@@ -41,7 +42,8 @@ public final class GerenciadorReservas {
         return reservasAuxiliar;
     }
 
-    public static ArrayList<Reserva> buscarReservasPorCodUsuario(int codUsuario) {
+    @Override
+    public ArrayList<Reserva> buscarReservasPorCodUsuario(int codUsuario) {
         ArrayList<Reserva> reservasAuxiliar = new ArrayList<>();
         for (Reserva reserva : reservas) {
             if (reserva.getCodUsuario() == codUsuario) {
@@ -51,7 +53,8 @@ public final class GerenciadorReservas {
         return reservasAuxiliar;
     }
 
-    public static boolean verificarReservasParaObservador(int codLivro) {
+    @Override
+    public boolean verificarReservasParaObservador(int codLivro) {
         int contador = 0;
         for (Reserva reserva : reservas) {
             if (codLivro == reserva.getCodLivro()) {
@@ -61,7 +64,8 @@ public final class GerenciadorReservas {
         return contador > 2;
     }
 
-    public static int buscarQuantidadeDeReservasPorLivro(int codLivro) {
+    @Override
+    public int buscarQuantidadeDeReservasPorLivro(int codLivro) {
         int contador = 0;
         for (Reserva reserva : reservas) {
             if (codLivro == reserva.getCodLivro()) {

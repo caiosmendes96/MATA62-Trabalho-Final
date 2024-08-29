@@ -4,8 +4,8 @@ public class ComandoDevolver implements IComando {
 
     public void executar(int codUsuario, int codLivro) {
 
-        Usuario usuario = GerenciadorBiblioteca.gerenciadorUsuarios.buscarUsuarioPorCodigo(codUsuario);
-        ArrayList<Emprestimo> emprestimosEncontrados = GerenciadorBiblioteca.gerenciadorEmprestimos
+        Usuario usuario = GerenciadorBiblioteca.getGerenciadorUsuarios().buscarUsuarioPorCodigo(codUsuario);
+        ArrayList<Emprestimo> emprestimosEncontrados = GerenciadorBiblioteca.getGerenciadorEmprestimos()
                 .buscarEmprestimosPorCodUsuarioECodLivro(codUsuario, codLivro);
 
         if (emprestimosEncontrados != null) {

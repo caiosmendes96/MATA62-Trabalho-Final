@@ -1,27 +1,31 @@
 import java.util.ArrayList;
 
-public final class GerenciadorUsuarios {
+public final class GerenciadorUsuarios implements IGerenciadorUsuarios {
 
     private static ArrayList<Usuario> usuarios = new ArrayList<>();
 
-    public static ArrayList<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    public static void setUsuarios(ArrayList<Usuario> usuarios) {
-        GerenciadorUsuarios.usuarios = usuarios;
-    }
-
-    public static void adicionarUsuario(Usuario usuario) {
+    @Override
+    public void adicionarUsuario(Usuario usuario) {
         usuarios.add(usuario);
     }
 
-    public static Usuario buscarUsuarioPorCodigo(int codigo) {
+    @Override
+    public Usuario buscarUsuarioPorCodigo(int codigo) {
         for (Usuario usuario : usuarios) {
             if (usuario.getCodigo() == codigo) {
                 return usuario;
             }
         }
         return null;
+    }
+
+    @Override
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    @Override
+    public void setUsuarios(ArrayList<Usuario> usuarios) {
+        GerenciadorUsuarios.usuarios = usuarios;
     }
 }

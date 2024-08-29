@@ -25,21 +25,21 @@ public class Programa {
 				"Addison- Wesley Professional", "Martin Fowler", "1º", 1999);
 		livro5.adicionarExemplar();
 
-		GerenciadorBiblioteca.gerenciadorLivros.adicionarLivro(livro1);
-		GerenciadorBiblioteca.gerenciadorLivros.adicionarLivro(livro2);
-		GerenciadorBiblioteca.gerenciadorLivros.adicionarLivro(livro3);
-		GerenciadorBiblioteca.gerenciadorLivros.adicionarLivro(livro4);
-		GerenciadorBiblioteca.gerenciadorLivros.adicionarLivro(livro5);
+		GerenciadorBiblioteca.getGerenciadorLivros().adicionarLivro(livro1);
+		GerenciadorBiblioteca.getGerenciadorLivros().adicionarLivro(livro2);
+		GerenciadorBiblioteca.getGerenciadorLivros().adicionarLivro(livro3);
+		GerenciadorBiblioteca.getGerenciadorLivros().adicionarLivro(livro4);
+		GerenciadorBiblioteca.getGerenciadorLivros().adicionarLivro(livro5);
 
 		Usuario usuario2 = new AlunoGraduacao("João da Silva", 123);
 		Usuario usuario3 = new AlunoPosGraduacao("Luiz Fernando Rodrigues", 456);
 		Usuario usuario4 = new AlunoPosGraduacao("Pedro Paulo", 789);
 		Usuario usuario1 = new Professor("Calos lucena", 100);
 
-		GerenciadorBiblioteca.gerenciadorUsuarios.adicionarUsuario(usuario1);
-		GerenciadorBiblioteca.gerenciadorUsuarios.adicionarUsuario(usuario2);
-		GerenciadorBiblioteca.gerenciadorUsuarios.adicionarUsuario(usuario3);
-		GerenciadorBiblioteca.gerenciadorUsuarios.adicionarUsuario(usuario4);
+		GerenciadorBiblioteca.getGerenciadorUsuarios().adicionarUsuario(usuario1);
+		GerenciadorBiblioteca.getGerenciadorUsuarios().adicionarUsuario(usuario2);
+		GerenciadorBiblioteca.getGerenciadorUsuarios().adicionarUsuario(usuario3);
+		GerenciadorBiblioteca.getGerenciadorUsuarios().adicionarUsuario(usuario4);
 
 		console.lerComando();
 		// System.out.println("Tempo emprestimo usuario 1: " +
