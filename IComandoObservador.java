@@ -1,5 +1,5 @@
 public interface IComandoObservador {
-    void executarRegistroObservador(int codUsuario, int codLivro);
+    public void executarRegistroObservador(int codUsuario, int codLivro);
 
-    void executarConsultaNotificacoes(int codUsuario);
+    public void executarConsultaNotificacoes(int codUsuario);
 }

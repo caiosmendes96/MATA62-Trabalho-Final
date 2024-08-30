@@ -3,8 +3,6 @@ public class Programa {
 
 	public static void main(String[] args) {
 
-		System.out.println("oi");
-
 		Console console = Console.getConsole();
 
 		Livro livro1 = new Livro(100, "Engenharia de Software", "Addison", "Ian Sommervile", "6º", 2000);

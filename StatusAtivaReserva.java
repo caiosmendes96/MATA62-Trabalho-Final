@@ -1,6 +1,3 @@
-
-
-
 public class StatusAtivaReserva implements IStatusReserva {
 
     @Override

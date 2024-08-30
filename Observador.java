@@ -1,3 +1,3 @@
 public interface Observador {
-    void atualizar(Livro livro);
+    public void atualizar(Livro livro);
 }

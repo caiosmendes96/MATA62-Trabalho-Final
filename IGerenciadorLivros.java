@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 public interface IGerenciadorLivros {
-    void adicionarLivro(Livro livro);
+   public void adicionarLivro(Livro livro);
 
-    Livro buscarLivroPorCodLivro(int codLivro);
+   public Livro buscarLivroPorCodLivro(int codLivro);
 
-    ArrayList<Livro> getLivros();
+   public ArrayList<Livro> getLivros();
 
-    void setLivros(ArrayList<Livro> livros);
+   public void setLivros(ArrayList<Livro> livros);
 
-    Exemplar buscarExemplarPorCodExemplar(Livro livro, int codExemplar);
+   public Exemplar buscarExemplarPorCodExemplar(Livro livro, int codExemplar);
 }

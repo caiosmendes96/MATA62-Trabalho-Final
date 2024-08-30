@@ -1,6 +1,3 @@
-
-
-
 public class StatusConcluidoEmprestimo implements IStatusEmprestimo {
 
     @Override

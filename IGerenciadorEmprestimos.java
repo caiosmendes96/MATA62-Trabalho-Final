@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 
 public interface IGerenciadorEmprestimos {
-    void criarEmprestimo(int codUsuario, int codLivro, int tempoEmprestimoUsuario, int codExemplar);
+    public void criarEmprestimo(int codUsuario, int codLivro, int tempoEmprestimoUsuario, int codExemplar);
 
-    Emprestimo buscarEmprestimoPorCodExemplar(int codExemplar);
+    public Emprestimo buscarEmprestimoPorCodExemplar(int codExemplar);
 
-    Emprestimo buscarEmprestimoPorCodLivro(int codLivro);
+    public Emprestimo buscarEmprestimoPorCodLivro(int codLivro);
 
-    ArrayList<Emprestimo> buscarEmprestimosPorCodUsuario(int codUsuario);
+    public ArrayList<Emprestimo> buscarEmprestimosPorCodUsuario(int codUsuario);
 
-    ArrayList<Emprestimo> buscarEmprestimosPorCodUsuarioECodLivro(int codUsuario, int codLivro);
+    public ArrayList<Emprestimo> buscarEmprestimosPorCodUsuarioECodLivro(int codUsuario, int codLivro);
 
-    void atualizarStatusDevedor(Usuario usuario);
+    public void atualizarStatusDevedor(Usuario usuario);
 }

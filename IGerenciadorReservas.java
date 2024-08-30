@@ -1,19 +1,19 @@
 import java.util.ArrayList;
 
 public interface IGerenciadorReservas {
-    void criarReserva(int codUsuario, int codLivro);
+    public void criarReserva(int codUsuario, int codLivro);
 
-    void removerReserva(Reserva reserva);
+    public void removerReserva(Reserva reserva);
 
-    Reserva buscarReservaPorCodLivroECodUsuario(int codUsuario, int codLivro);
+    public Reserva buscarReservaPorCodLivroECodUsuario(int codUsuario, int codLivro);
 
-    ArrayList<Reserva> buscarReservasPorCodLivro(int codLivro);
+    public ArrayList<Reserva> buscarReservasPorCodLivro(int codLivro);
 
-    ArrayList<Reserva> buscarReservasPorCodUsuario(int codUsuario);
+    public ArrayList<Reserva> buscarReservasPorCodUsuario(int codUsuario);
 
-    boolean verificarReservasParaObservador(int codLivro);
+    public boolean verificarReservasParaObservador(int codLivro);
 
-    int buscarQuantidadeDeReservasPorLivro(int codLivro);
+    public int buscarQuantidadeDeReservasPorLivro(int codLivro);
 
-    ArrayList<Reserva> getReservas();
+    public ArrayList<Reserva> getReservas();
 }

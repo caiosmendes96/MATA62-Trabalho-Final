@@ -1,7 +1,3 @@
-
-
-
-
 public class StatusDisponivelExemplar implements IStatusExemplar {
     
     @Override

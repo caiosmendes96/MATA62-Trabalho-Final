@@ -1,6 +1,3 @@
-
-
-
 public interface IStatusEmprestimo {
 
     public void consultarData(Emprestimo emprestimo);
