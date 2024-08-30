@@ -7,7 +7,6 @@ public class StatusFinalizadaReserva implements IStatusReserva {
     public void alterarStatus(Reserva reserva){
             
     }
-
     @Override
     public boolean isAtiva(){
 

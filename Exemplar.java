@@ -26,7 +26,7 @@ public class Exemplar {
     // MÉTODOS RELACIONADOS AO PADRÃO STATE STATUS
 
     public boolean podeEmprestar() {
-        return status.validarEmprestimo();
+        return status.isDisponivel();
     }
 
     public void emprestar(){
@@ -34,7 +34,6 @@ public class Exemplar {
     }
 
     public void consultar(Emprestimo emprestimo){
-        
         status.consultar(emprestimo);
     }
 

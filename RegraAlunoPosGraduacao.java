@@ -3,12 +3,7 @@ import java.util.ArrayList;
 public class RegraAlunoPosGraduacao implements IRegraUsuario {
 
     @Override
-    public boolean validarEmprestimo(Usuario usuario, Livro livro) {
-
-        Reserva reservaEncontrada = GerenciadorBiblioteca.getGerenciadorReservas()
-                .buscarReservaPorCodLivroECodUsuario(usuario.getCodigo(), livro.getCodigo());
-        ArrayList<Emprestimo> emprestimosEncontrados = GerenciadorBiblioteca.getGerenciadorEmprestimos()
-                .buscarEmprestimosPorCodUsuarioECodLivro(usuario.getCodigo(), livro.getCodigo());
+    public boolean validarEmprestimo(Usuario usuario, Livro livro,Reserva reservaEncontrada, ArrayList<Emprestimo> emprestimosEncontrados) {
 
         if (usuario.isDevedor()) {
             System.out.println("Não foi possível criar o empréstimo, pois o usuario é devedor! \n");
@@ -21,19 +16,17 @@ public class RegraAlunoPosGraduacao implements IRegraUsuario {
             return false;
         }
 
-        if (reservaEncontrada == null && livro.buscarQuantidadeDeExemplaresDisponiveis() <= GerenciadorBiblioteca
-                .getGerenciadorReservas().buscarQuantidadeDeReservasPorLivro(livro.getCodigo())) {
-            System.out.println(
-                    "Não foi possível criar o empréstimo, todos os exemplares estão reservados e você não tem reserva para esse livro! \n");
+        if (reservaEncontrada == null 
+                && livro.buscarQuantidadeDeExemplaresDisponiveis() <= GerenciadorBiblioteca.getGerenciadorReservas()
+                        .buscarQuantidadeDeReservasPorLivro(livro.getCodigo())) {
+            System.out.println("Não foi possível criar o empréstimo, todos os exemplares estão reservados e você não tem reserva para esse livro! \n");
             return false;
         }
-
         if (emprestimosEncontrados != null) {
             for (Emprestimo emprestimo : emprestimosEncontrados) {
 
                 if (emprestimo.getStatus().isEmCurso()) {
-                    System.out.println(
-                            "Não foi possível criar o empréstimo, pois já existe um emprestimo desse livro em curso! \n");
+                    System.out.println("Não foi possível criar o empréstimo, pois já existe um emprestimo desse livro em curso! \n");
                     return false;
                 }
             }

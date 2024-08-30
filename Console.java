@@ -15,6 +15,12 @@ public class Console { // INVOKER DO COMMAND
         return console;
     }
 
+    public void finalizarPrograma(){
+
+        System.out.println("Certo. Até mais!");
+        System.out.println("Aplicação Encerrada.");
+    }
+
     // Método para ler comandos do console
     public void lerComando() {
         String codUsuario;
@@ -30,7 +36,7 @@ public class Console { // INVOKER DO COMMAND
 
         String command = "";
 
-        while (!command.split(" ")[0].equals("sair")) {
+        while (!command.split(" ")[0].equals("sai")) {
 
             System.out.print("Digite um comando: ");
 
@@ -76,10 +82,6 @@ public class Console { // INVOKER DO COMMAND
 
                     break;
 
-                case "sair":
-                    System.out.println("Certo. Até mais!");
-                    System.out.println("Aplicação Encerrada.");
-                    break;
                 case "obs":
                     codUsuario = command.split(" ")[1];
                     codLivro = command.split(" ")[2];
@@ -91,6 +93,10 @@ public class Console { // INVOKER DO COMMAND
                     codUsuario = command.split(" ")[1];
 
                     ComandoObservador.executarConsultaNotificacoes(Integer.parseInt(codUsuario));
+                    break;
+
+                case "sai":
+                    this.finalizarPrograma();
                     break;
                 default:
 

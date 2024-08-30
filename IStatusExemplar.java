@@ -4,7 +4,7 @@
 public interface IStatusExemplar {
 
 
-    public boolean validarEmprestimo();
+    public boolean isDisponivel();
 
     public void emprestar(Exemplar exemplar);
 

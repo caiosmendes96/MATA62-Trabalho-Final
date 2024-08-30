@@ -7,7 +7,7 @@ public class StatusEmprestadoExemplar implements IStatusExemplar {
     }
 
     @Override
-    public boolean validarEmprestimo() {
+    public boolean isDisponivel() {
 
         return false;
     }

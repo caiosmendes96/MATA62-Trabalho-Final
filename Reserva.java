@@ -59,5 +59,8 @@ public class Reserva {
     public String getNomeStatus(){
         return this.status.getNomeStatus();
     }
+    public boolean isAtiva(){
+        return this.status.isAtiva();
+    }
 
 }

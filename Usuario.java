@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public abstract class Usuario {
 
@@ -52,9 +53,7 @@ public abstract class Usuario {
         this.tempoEmprestimo = tempoEmprestimo;
     }
 
-    public void incrementarQtdReserva() {
-        this.qtdReservas++;
-    }
+
 
     public int getQtdReservas() {
         return qtdReservas;
@@ -81,17 +80,28 @@ public abstract class Usuario {
         this.devedor = devedor;
     }
 
-    public boolean podeEmprestar(Livro livro){
-        return regraUsuario.validarEmprestimo(this, livro);
+    public boolean podeEmprestar(Livro livro, Reserva reservaEncontrada, ArrayList<Emprestimo> emprestimosEncontrados){
+        return regraUsuario.validarEmprestimo(this, livro,reservaEncontrada,emprestimosEncontrados);
+    }
+
+    public void incrementarQtdReserva() {
+        this.qtdReservas++;
+    }
+
+    public void diminuirQtdReserva() {
+        this.qtdReservas--;
     }
 
     public void atualizarLimiteEmprestimos(){
 
-        this.limiteEmprestimo -=1 ;
+        this.limiteEmprestimo -=1;
     }
 
     public boolean podeReservar(){
+
         return this.qtdReservas < 3;
     }
+
+
 
 }
