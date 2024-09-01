@@ -57,7 +57,7 @@ public final class GerenciadorReservas implements IGerenciadorReservas {
     public boolean verificarReservasParaObservador(int codLivro) {
         int contador = 0;
         for (Reserva reserva : reservas) {
-            if (codLivro == reserva.getCodLivro()) {
+            if (codLivro == reserva.getCodLivro() && reserva.isAtiva()) {
                 contador += 1;
             }
         }
